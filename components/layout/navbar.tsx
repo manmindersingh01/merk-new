@@ -20,19 +20,24 @@ export function Navbar() {
 	const pathname = usePathname();
 
 	return (
-		<header className="fixed top-0  right-0 left-0 z-50 w-full">
-			<div className="mx-auto max-w-5xl   px-4 pt-4">
-				<nav className="flex h-14 items-center justify-between rounded-full border border-border/40 bg-popover px-2 py-2 pl-6 backdrop-blur-xl">
-					{/* Logo */}
-					<Link
-						href="/"
-						className="shrink-0"
-					>
-						<img
-						src="/logo.svg"
-						alt="MerkMetryx"
-						className="h-8 w-auto object-contain"
-					/>
+		<header className="fixed top-0 right-0 left-0 z-50 w-full">
+			<div className="mx-auto max-w-5xl px-4 pt-4">
+				<nav className="flex h-14 items-center justify-between rounded-full border border-border/40 bg-popover px-2 py-2 pl-4 backdrop-blur-xl">
+					{/* Logo — renders SVG at 200px wide and clips to show the
+					    wordmark+icon region (SVG content sits at y≈172–216 in
+					    a 375×375 canvas; at scale 200/375≈0.533 that maps to
+					    rendered y≈80–115 px, so we offset by -80px). */}
+					<Link href="/" className="shrink-0">
+						<div
+							className="overflow-hidden"
+							style={{ width: "195px", height: "36px" }}
+						>
+							<img
+								src="/logo.svg"
+								alt="MerkMetryx"
+								style={{ width: "200px", marginTop: "-80px" }}
+							/>
+						</div>
 					</Link>
 
 					{/* Desktop nav links — centered */}
