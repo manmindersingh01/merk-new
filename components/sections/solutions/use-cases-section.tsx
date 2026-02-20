@@ -1,102 +1,91 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { TrendingUp, Search, Users, TestTube, DollarSign } from "lucide-react";
 
 const useCases = [
-	"New product launch validation",
-	"Market entry assessment",
-	"Consumer preference studies",
-	"Pricing optimization",
-	"Feasibility studies for capital investments",
-	"Expansion strategy validation",
+	{
+		icon: TrendingUp,
+		title: "Market Sizing (TAM/SAM/SOM)",
+		description:
+			"Quantify the target market and identify niche gaps that competitors may have overlooked.",
+	},
+	{
+		icon: Search,
+		title: "Competitor Analysis",
+		description:
+			"Utilize mystery shopping, online traffic tools (e.g., SEMrush, SimilarWeb), and SWOT analysis to assess the strengths and weaknesses of industry rivals.",
+	},
+	{
+		icon: Users,
+		title: "Consumer Insights",
+		description:
+			`Leverage buyer personas—such as "Ellen the Engineer"—to understand the specific pain points and emotional drivers of target segments.`,
+	},
+	{
+		icon: TestTube,
+		title: "Concept Testing",
+		description:
+			"Evaluate the appeal of a new product idea, logo, or name before public rollout to ensure uniqueness and market appeal.",
+	},
+	{
+		icon: DollarSign,
+		title: "Pricing Sensitivity",
+		description:
+			"Determine the optimal price point that balances revenue with market adoption through willingness-to-pay studies.",
+	},
 ];
 
 export function UseCasesSection() {
 	return (
-		<section className="pb-32 md:pb-40">
-			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+		<section className="bg-card/40 px-4 py-16 sm:px-6 sm:py-24 md:px-10 lg:px-16">
+			<div className="mx-auto max-w-7xl">
+				{/* Heading */}
 				<motion.div
-					initial={{ opacity: 0, y: 50 }}
+					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-					className="grid lg:grid-cols-2 gap-20 items-start"
+					transition={{ duration: 0.5 }}
+					className="mb-12 sm:mb-16"
 				>
-					{/* Left Column — Heading + Intro */}
-					<div>
-						<h2 className="group text-4xl md:text-6xl font-bold leading-tight">
-							Key{" "}
-							<span className="relative inline-block text-primary">
-								Use Cases
-								<span
-									className="absolute left-0 -bottom-2 h-1 w-0 
-									bg-linear-to-r from-primary to-primary/60
-									transition-all duration-500 ease-out
-									group-hover:w-full"
-								/>
-							</span>
-						</h2>
+					<p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+						Practical Use Cases
+					</p>
+					<h2 className="mt-2 max-w-2xl text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl">
+						Validating Every Decision with Evidence
+					</h2>
+					<p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+						MerkMetryx facilitates specific types of research projects to ensure
+						every strategic decision is backed by data and validated insights.
+					</p>
+				</motion.div>
 
-						<p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-md">
-							Practical applications where structured validation reduces
-							uncertainty and supports confident strategic decisions.
-						</p>
-					</div>
-
-					{/* Right Column — Clean List */}
-					<div className="space-y-8">
-						{useCases.map((text, idx) => (
+				{/* Grid */}
+				<div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+					{useCases.map((useCase, i) => {
+						const Icon = useCase.icon;
+						return (
 							<motion.div
-								key={idx}
-								initial={{ opacity: 0, y: 30 }}
+								key={i}
+								initial={{ opacity: 0, y: 24 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								transition={{
-									duration: 0.4,
-									delay: idx * 0.05,
-								}}
-								className="group"
+								transition={{ duration: 0.5, delay: i * 0.08 }}
+								className="rounded-2xl border border-border/40 bg-card p-6 transition-shadow hover:shadow-md sm:rounded-3xl sm:p-7"
 							>
-								<div className="flex items-start gap-6">
-									<div className="text-sm font-medium text-primary mt-1">
-										0{idx + 1}
-									</div>
-
-									<h3
-										className="
-											text-lg md:text-xl
-											font-medium
-											leading-relaxed
-											transition-colors duration-300
-											group-hover:text-primary
-										"
-									>
-										{text}
-									</h3>
+								<div className="mb-4 inline-flex items-center justify-center rounded-xl bg-primary/10 p-3">
+									<Icon className="size-5 text-primary sm:size-6" />
 								</div>
+								<h3 className="text-sm font-bold text-foreground sm:text-base">
+									{useCase.title}
+								</h3>
+								<p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+									{useCase.description}
+								</p>
 							</motion.div>
-						))}
-					</div>
-				</motion.div>
-
-				{/* CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 40 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6, delay: 0.3 }}
-					className="mt-28 flex justify-center"
-				>
-					<Button
-						size="lg"
-						className="px-10 py-6 text-sm font-medium rounded-full hover:cursor-pointer hover:bg-foreground"
-					>
-						View Solutions
-					</Button>
-				</motion.div>
-				<Separator className="mt-32" />
+						);
+					})}
+				</div>
 			</div>
 		</section>
 	);
