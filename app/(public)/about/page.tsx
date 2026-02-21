@@ -16,7 +16,7 @@ export default function About() {
 			<LeadershipSection />
 			<PlatformStatsSection />
 			<DifferentiationSection />
-			<CareersSection />
+			{/* <CareersSection /> */}
 			<AboutCtaSection />
 		</div>
 	);
