@@ -29,7 +29,7 @@ const TRUST_POINTS = [
 
 export default function ContactPage() {
 	return (
-		<div className="min-h-screen bg-background">
+		<div className="min-h-screen bg-background pt-28 mt-14">
 			{/* Hero strip */}
 			<section className="border-b border-border/40 bg-card/50 px-6 py-16 text-center md:py-20">
 				<p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">

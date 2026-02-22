@@ -49,11 +49,17 @@ export function Footer() {
 			<div className="mx-auto mt-3 max-w-7xl rounded-2xl border border-border/40 bg-card px-5 py-8 sm:mt-4 sm:rounded-3xl sm:p-10 md:rounded-[2rem]">
 				{/* Brand */}
 				<div className="mb-8 sm:mb-10">
-					<Link
-						href="/"
-						className="text-lg font-bold tracking-tight text-foreground"
-					>
-						MERKMETRYX
+					<Link href="/" className="shrink-0">
+						<div
+							className="overflow-hidden"
+							style={{ width: "195px", height: "36px" }}
+						>
+							<img
+								src="/logo.svg"
+								alt="MerkMetryx"
+								style={{ width: "200px", marginTop: "-80px" }}
+							/>
+						</div>
 					</Link>
 					<p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground sm:mt-3">
 						Full-spectrum market research and product validation firm helping
