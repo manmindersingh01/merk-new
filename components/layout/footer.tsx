@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const footerLinks = {
 	Company: [
 		{ label: "About", href: "/about" },
-		{ label: "Resources", href: "/resources" },
+		{ label: "Blog", href: "/blog" },
 		{ label: "Contact", href: "/contact" },
 	],
 	Services: [
@@ -16,7 +16,10 @@ const footerLinks = {
 };
 
 const contactInfo = {
-	address: "606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614",
+	addresses: [
+		"606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614",
+		"801-4 Apricot Tower, Dubai Silicon Oasis, Dubai, UAE",
+	],
 	phones: ["+91 9987875288", "+91 9920419569"],
 	email: "business@agixinternational.com",
 };
@@ -128,11 +131,16 @@ export function Footer() {
 								</a>
 							))}
 
-							{/* Address */}
-							<div className="flex items-start gap-2 text-xs text-muted-foreground sm:text-sm">
-								<MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
-								<span className="leading-relaxed">{contactInfo.address}</span>
-							</div>
+							{/* Addresses */}
+							{contactInfo.addresses.map((address, index) => (
+								<div
+									key={index}
+									className="flex items-start gap-2 text-xs text-muted-foreground sm:text-sm"
+								>
+									<MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
+									<span className="leading-relaxed">{address}</span>
+								</div>
+							))}
 						</div>
 					</div>
 
