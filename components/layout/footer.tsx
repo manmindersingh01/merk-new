@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Instagram, Youtube, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const footerLinks = {
@@ -13,13 +13,19 @@ const footerLinks = {
 		{ label: "Solutions", href: "/solutions" },
 		{ label: "Pricing", href: "/pricing" },
 	],
-	Industries: [
-		{ label: "Consumer Goods & FMCG" },
-		{ label: "Technology & SaaS" },
-		{ label: "Healthcare & Wellness" },
-		{ label: "Manufacturing & Industrial" },
-	],
 };
+
+const contactInfo = {
+	address: "606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614",
+	phones: ["+91 9987875288", "+91 9920419569"],
+	email: "bussiness@agixinternational.com",
+};
+
+const socialLinks = [
+	{ name: "Instagram", url: "https://www.instagram.com/merkmetryx/", icon: Instagram },
+	{ name: "YouTube", url: "https://www.youtube.com/@Merkmetryx", icon: Youtube },
+	{ name: "X (Formerly Twitter)", url: "https://x.com/merkmetryx", icon: Twitter },
+];
 
 export function Footer() {
 	return (
@@ -67,8 +73,8 @@ export function Footer() {
 					</p>
 				</div>
 
-				{/* Link columns — 3 cols side by side on all sizes */}
-				<div className="grid grid-cols-3 gap-6 sm:gap-10">
+				{/* Link columns — responsive layout */}
+				<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
 					{Object.entries(footerLinks).map(([title, links]) => (
 						<div key={title}>
 							<h3 className="text-xs font-semibold text-foreground sm:text-sm">
@@ -94,18 +100,81 @@ export function Footer() {
 							</ul>
 						</div>
 					))}
+
+					{/* Contact Us column */}
+					<div>
+						<h3 className="text-xs font-semibold text-foreground sm:text-sm">
+							Contact Us
+						</h3>
+						<div className="mt-2 flex flex-col gap-2 sm:mt-3">
+							{/* Email */}
+							<a
+								href={`mailto:${contactInfo.email}`}
+								className="flex items-start gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+							>
+								<Mail className="size-4 shrink-0 text-primary" />
+								<span className="break-all">{contactInfo.email}</span>
+							</a>
+
+							{/* Phones */}
+							{contactInfo.phones.map((phone) => (
+								<a
+									key={phone}
+									href={`tel:${phone.replace(/\s/g, "")}`}
+									className="flex items-start gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+								>
+									<Phone className="size-4 shrink-0 text-primary" />
+									<span>{phone}</span>
+								</a>
+							))}
+
+							{/* Address */}
+							<div className="flex items-start gap-2 text-xs text-muted-foreground sm:text-sm">
+								<MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
+								<span className="leading-relaxed">{contactInfo.address}</span>
+							</div>
+						</div>
+					</div>
+
+					{/* Socials column */}
+					<div>
+						<h3 className="text-xs font-semibold text-foreground sm:text-sm">
+							Socials
+						</h3>
+						<ul className="mt-2 flex flex-col gap-1.5 sm:mt-3 sm:gap-2">
+							{socialLinks.map((social) => {
+								const Icon = social.icon;
+								return (
+									<li key={social.name}>
+										<a
+											href={social.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+										>
+											<Icon className="size-4 shrink-0 text-primary" />
+											{social.name}
+										</a>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
 				</div>
 
 				{/* Bottom bar */}
 				<div className="mt-8 flex flex-col items-center gap-3 border-t border-border/40 pt-5 text-center sm:mt-10 sm:flex-row sm:justify-between sm:pt-6 sm:text-left">
+					{/* Copyright */}
 					<p className="text-xs text-muted-foreground">
 						&copy; {new Date().getFullYear()} MerkMetryx. All rights reserved.
 					</p>
+
+					{/* Privacy & Terms */}
 					<div className="flex gap-6">
-						<span className="text-xs text-muted-foreground">
+						<span className="cursor-pointer text-xs text-muted-foreground transition-colors hover:text-foreground">
 							Privacy Policy
 						</span>
-						<span className="text-xs text-muted-foreground">
+						<span className="cursor-pointer text-xs text-muted-foreground transition-colors hover:text-foreground">
 							Terms of Service
 						</span>
 					</div>

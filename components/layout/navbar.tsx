@@ -13,6 +13,7 @@ const navLinks = [
 	{ label: "Pricing", href: "/pricing" },
 	{ label: "Blog", href: "/blog" },
 	{ label: "About", href: "/about" },
+	{ label: "Contact", href: "/contact" }
 ];
 
 export function Navbar() {
@@ -21,8 +22,8 @@ export function Navbar() {
 
 	return (
 		<header className="fixed top-0 right-0 left-0 z-50 w-full">
-			<div className="mx-auto max-w-5xl px-4 pt-4">
-				<nav className="flex h-14 items-center justify-between rounded-full border border-border/40 bg-popover px-2 py-2 pl-4 backdrop-blur-xl">
+			<div className="mx-auto max-w-7xl px-4 pt-4">
+				<nav className="flex h-17 items-center justify-between rounded-full border border-border/40 bg-popover px-2 py-2 pl-4 backdrop-blur-xl">
 					{/* Logo — renders SVG at 200px wide and clips to show the
 					    wordmark+icon region (SVG content sits at y≈172–216 in
 					    a 375×375 canvas; at scale 200/375≈0.533 that maps to
@@ -35,7 +36,7 @@ export function Navbar() {
 							<img
 								src="/logo.svg"
 								alt="MerkMetryx"
-								style={{ width: "200px", marginTop: "-80px" }}
+								style={{ marginTop: "-80px" }}
 							/>
 						</div>
 					</Link>
