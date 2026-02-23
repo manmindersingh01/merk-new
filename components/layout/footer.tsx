@@ -18,7 +18,7 @@ const footerLinks = {
 const contactInfo = {
 	address: "606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614",
 	phones: ["+91 9987875288", "+91 9920419569"],
-	email: "bussiness@agixinternational.com",
+	email: "business@agixinternational.com",
 };
 
 const socialLinks = [

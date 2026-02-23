@@ -5,65 +5,7 @@ import { Check, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const tiers = [
-	{
-		name: "Starter",
-		tagline: "Solo founders & pre-seed teams",
-		priceLabel: "Low-cost entry",
-		description:
-			"Essential survey tools, basic AI insights, 1 project per month",
-		cta: "Start for free",
-		href: "/contact",
-		featured: false,
-		features: [
-			"Essential survey builder with AI bias checks",
-			"Basic NLP & sentiment analysis",
-			"1 active project per month",
-			"Real-time results dashboard",
-			"Global consumer panel access",
-			"Single-user workspace",
-		],
-	},
-	{
-		name: "Growth",
-		tagline: "Emerging startups & research agencies",
-		priceLabel: "Seat-based pricing",
-		description:
-			"Advanced NLP, predictive modeling, multi-channel reporting",
-		cta: "Book a demo",
-		href: "/contact",
-		featured: true,
-		features: [
-			"Everything in Starter",
-			"Advanced NLP & predictive modeling",
-			"Unlimited active projects",
-			"Multi-channel reporting & exports",
-			"Team collaboration & shared workspaces",
-			"Custom survey templates",
-			"Priority support",
-		],
-	},
-	{
-		name: "Professional",
-		tagline: "Scaling teams with high research volume",
-		priceLabel: "Annual commitment",
-		description:
-			"Integration suite, dedicated sentiment analysis, custom templates",
-		cta: "Talk to sales",
-		href: "/contact",
-		featured: false,
-		features: [
-			"Everything in Growth",
-			"Full integration suite (API, webhooks, custom)",
-			"Dedicated sentiment analysis engine",
-			"Custom methodologies & templates",
-			"Volume discounts & flexible pricing",
-			"Advanced team permissions",
-			"Dedicated account manager",
-		],
-	},
-];
+import { pricingTiers } from "@/lib/pricing-data";
 
 export function PricingTiersSection() {
 	return (
@@ -90,8 +32,8 @@ export function PricingTiersSection() {
 				</motion.div>
 
 				{/* Pricing cards */}
-				<div className="grid gap-6 lg:grid-cols-3">
-					{tiers.map((tier, i) => (
+				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+					{pricingTiers.map((tier, i) => (
 						<motion.div
 							key={i}
 							initial={{ opacity: 0, y: 24 }}
@@ -129,31 +71,48 @@ export function PricingTiersSection() {
 								>
 									{tier.name}
 								</h3>
-								<p
+
+								{/* Recommended for badge */}
+								<div
 									className={cn(
-										"mt-1 text-xs font-medium",
+										"mt-3 inline-block rounded-lg px-3 py-1.5 text-xs font-medium",
 										tier.featured
-											? "text-primary-foreground/70"
-											: "text-muted-foreground"
+											? "bg-primary-foreground/20 text-primary-foreground"
+											: "bg-primary/10 text-primary"
 									)}
 								>
-									{tier.priceLabel}
-								</p>
-								<p
-									className={cn(
-										"mt-3 text-sm leading-relaxed",
-										tier.featured
-											? "text-primary-foreground/80"
-											: "text-muted-foreground"
-									)}
-								>
-									{tier.description}
-								</p>
+									{tier.recommendedFor}
+								</div>
+
+								{/* Key metrics */}
+								<div className="mt-4 space-y-2">
+									<p
+										className={cn(
+											"text-xs",
+											tier.featured
+												? "text-primary-foreground/70"
+												: "text-muted-foreground"
+										)}
+									>
+										<span className="font-semibold">Responses:</span>{" "}
+										{tier.responsesPerMonth}
+									</p>
+									<p
+										className={cn(
+											"text-xs",
+											tier.featured
+												? "text-primary-foreground/70"
+												: "text-muted-foreground"
+										)}
+									>
+										<span className="font-semibold">Users:</span> {tier.users}
+									</p>
+								</div>
 							</div>
 
 							{/* Features */}
 							<ul className="mb-8 flex flex-col gap-3">
-								{tier.features.map((feature, j) => (
+								{tier.highlights.map((highlight, j) => (
 									<li key={j} className="flex items-start gap-2.5">
 										<Check
 											className={cn(
@@ -169,7 +128,7 @@ export function PricingTiersSection() {
 													: "text-foreground"
 											)}
 										>
-											{feature}
+											{highlight}
 										</span>
 									</li>
 								))}
@@ -177,7 +136,7 @@ export function PricingTiersSection() {
 
 							{/* CTA */}
 							<div className="mt-auto">
-								<Link href={tier.href} className="block">
+								<Link href={tier.ctaHref} className="block">
 									<Button
 										size="lg"
 										variant={tier.featured ? "secondary" : "default"}
