@@ -140,7 +140,7 @@ export function HeroSection() {
 								playsInline
 								className="h-auto w-full object-cover"
 							>
-								<source src="/merkmetryx.mp4" type="video/mp4" />
+								<source src="/Merkmetryx.mp4" type="video/mp4" />
 							</video>
 						</div>
 					</div>
