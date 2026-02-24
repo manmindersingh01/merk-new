@@ -13,7 +13,7 @@ const trustStats = [
 
 export function HeroSection() {
 	return (
-		<section className="relative min-h-screen overflow-hidden px-4 pt-24 pb-12 sm:px-6 sm:pt-28 md:px-10 md:pt-32 lg:px-16">
+		<section className="relative min-h-screen overflow-visible px-4 pt-24 pb-12 sm:px-6 sm:pt-28 md:px-10 md:pt-32 lg:px-16">
 			{/* Background gradient blobs */}
 			<div className="pointer-events-none absolute inset-0">
 				<div className="absolute left-1/4 top-1/3 h-150 w-150 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/6 blur-3xl" />
@@ -123,34 +123,41 @@ export function HeroSection() {
 					initial={{ opacity: 0, x: 40 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.7, delay: 0.4 }}
-					className="relative flex items-center"
+					className="relative flex flex-col items-center"
 				>
-					{/* Glow behind video */}
+					{/* Glow behind */}
 					<div className="pointer-events-none absolute inset-0 rounded-3xl bg-primary/8 blur-2xl" />
 
-					<div className="relative w-full overflow-hidden rounded-2xl border border-border/40 shadow-2xl shadow-primary/10 sm:rounded-3xl">
-						<video
-							autoPlay
-							loop
-							muted
-							playsInline
-							className="h-auto w-full object-cover"
-						>
-							<source src="/hero.mp4" type="video/mp4" />
-						</video>
+					{/* Video Card */}
+					{/* Shadow wrapper */}
+					<div className="relative z-20 w-full rounded-3xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.35)]">
+						{/* Clip wrapper */}
+						<div className="overflow-hidden rounded-3xl border border-border/40">
+							<video
+								autoPlay
+								loop
+								muted
+								playsInline
+								className="h-auto w-full object-cover"
+							>
+								<source src="/Merkmetryx.mp4" type="video/mp4" />
+							</video>
+						</div>
+					</div>
 
-						{/* Floating badge overlay */}
-						<div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-border/30 bg-background/80 px-4 py-2.5 backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5">
+					{/* Floating Data Card */}
+					<div className="relative z-0 w-full -mt-5 rounded-b-2xl border border-border/30 bg-background px-6 py-4 shadow-xl">
+						<div className="flex items-center justify-between pt-4">
 							<div>
-								<p className="text-xs font-semibold text-foreground">
+								<p className="text-sm font-semibold text-foreground">
 									Real-time Intelligence
 								</p>
-								<p className="text-[10px] text-muted-foreground">
+								<p className="text-xs text-muted-foreground">
 									Live dashboard · 500+ data sources
 								</p>
 							</div>
-							<span className="flex items-center gap-1.5 text-[10px] font-semibold text-primary">
-								<span className="inline-block size-1.5 rounded-full bg-green-500 animate-pulse" />
+							<span className="flex items-center gap-1.5 text-xs font-semibold text-primary">
+								<span className="inline-block size-2 rounded-full bg-green-500 animate-pulse" />
 								Live
 							</span>
 						</div>

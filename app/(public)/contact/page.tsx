@@ -89,35 +89,21 @@ export default function ContactPage() {
 							<div className="flex flex-col gap-3">
 								<div className="flex items-center gap-3 text-sm text-muted-foreground">
 									<Mail className="size-4 shrink-0 text-primary" />
-									hello@merkmetryx.com
+									business@agixinternational.com
 								</div>
 								<div className="flex items-center gap-3 text-sm text-muted-foreground">
 									<MapPin className="size-4 shrink-0 text-primary" />
-									London, UK &amp; New York, USA
+									606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614, INDIA.
+								</div>
+								<div className="flex items-center gap-3 text-sm text-muted-foreground">
+									<MapPin className="size-4 shrink-0 text-primary" />
+									801-4 Apricot Tower, Dubai Silicon Oasis, Dubai, UAE
 								</div>
 								<div className="flex items-center gap-3 text-sm text-muted-foreground">
 									<Clock className="size-4 shrink-0 text-primary" />
 									Mon – Fri, 9 am – 6 pm GMT
 								</div>
 							</div>
-						</div>
-
-						{/* Trust points */}
-						<div className="rounded-2xl border border-border/40 bg-card p-6">
-							<h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-foreground">
-								Why MerkMetryx
-							</h3>
-							<ul className="flex flex-col gap-2.5">
-								{TRUST_POINTS.map((point) => (
-									<li
-										key={point}
-										className="flex items-center gap-2 text-sm text-muted-foreground"
-									>
-										<CheckCircle2 className="size-4 shrink-0 text-emerald-500" />
-										{point}
-									</li>
-								))}
-							</ul>
 						</div>
 					</div>
 				</div>

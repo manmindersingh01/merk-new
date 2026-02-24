@@ -1,6 +1,7 @@
 import { PricingHeroSection } from "@/components/sections/pricing/pricing-hero-section";
 import { PricingTiersSection } from "@/components/sections/pricing/pricing-tiers-section";
-import { EnterpriseSection } from "@/components/sections/pricing/enterprise-section";
+import { PricingComparisonTableSection } from "@/components/sections/pricing/pricing-comparison-table-section";
+import { PricingValuePropsSection } from "@/components/sections/pricing/pricing-value-props-section";
 import { PricingPhilosophySection } from "@/components/sections/pricing/pricing-philosophy-section";
 import { PricingFaqSection } from "@/components/sections/pricing/pricing-faq-section";
 import { PricingCtaSection } from "@/components/sections/pricing/pricing-cta-section";
@@ -10,7 +11,8 @@ export default function Pricing() {
 		<div className="min-h-screen bg-background">
 			<PricingHeroSection />
 			<PricingTiersSection />
-			<EnterpriseSection />
+			<PricingComparisonTableSection />
+			<PricingValuePropsSection />
 			<PricingPhilosophySection />
 			<PricingFaqSection />
 			<PricingCtaSection />
