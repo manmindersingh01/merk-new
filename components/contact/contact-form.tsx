@@ -127,6 +127,18 @@ export function ContactForm() {
 				</select>
 			</div>
 
+			{/* Location */}
+			<div>
+				<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+					Location
+				</label>
+				<input
+					name="location"
+					placeholder="City, Country (optional)"
+					className="w-full rounded-xl border border-border/40 bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
+				/>
+			</div>
+
 			{/* Message */}
 			<div>
 				<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
