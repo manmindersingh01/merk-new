@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { submitContact } from "@/app/(public)/contact/actions";
 import { Button } from "@/components/ui/button";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { Loader2, CheckCircle2, Tag } from "lucide-react";
 
 const SERVICES = [
 	"Brand Health Tracking",
@@ -15,7 +16,16 @@ const SERVICES = [
 	"Custom Research",
 ];
 
+const SOURCE_LABELS: Record<string, string> = {
+	home_pricing: "Home Page",
+	pricing_page: "Pricing Page",
+};
+
 export function ContactForm() {
+	const searchParams = useSearchParams();
+	const plan = searchParams.get("plan");
+	const source = searchParams.get("source");
+
 	const [isPending, startTransition] = useTransition();
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -56,6 +66,27 @@ export function ContactForm() {
 					{error}
 				</div>
 			)}
+
+			{/* Plan banner — shown when arriving from pricing */}
+			{plan && (
+				<div className="flex items-center gap-2.5 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+					<Tag className="size-4 shrink-0 text-primary" />
+					<div className="text-sm">
+						<span className="font-semibold text-foreground">
+							{plan} Plan
+						</span>
+						{source && SOURCE_LABELS[source] && (
+							<span className="ml-1.5 text-muted-foreground">
+								via {SOURCE_LABELS[source]}
+							</span>
+						)}
+					</div>
+				</div>
+			)}
+
+			{/* Hidden fields for plan tracking */}
+			{plan && <input type="hidden" name="plan" value={plan} />}
+			{source && <input type="hidden" name="source" value={source} />}
 
 			{/* Name + Company row */}
 			<div className="grid gap-4 sm:grid-cols-2">

@@ -1,20 +1,48 @@
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { PostsTable } from "@/components/admin/posts-table";
+import { DashboardCharts } from "@/components/admin/dashboard-charts";
 import { Post } from "@/types/blog";
 import Link from "next/link";
-import { Plus, FileText, Globe, FileEdit, Users } from "lucide-react";
+import {
+	Plus,
+	FileText,
+	Globe,
+	FileEdit,
+	Users,
+	Eye,
+	TrendingUp,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default async function AdminPage() {
-	const [{ data: posts }, { data: leads }] = await Promise.all([
-		supabase.from("posts").select("*").order("created_at", { ascending: false }),
-		supabase.from("leads").select("id, created_at"),
-	]);
+	const [{ data: posts }, { data: leads }, { data: pageViews }] =
+		await Promise.all([
+			supabase
+				.from("posts")
+				.select("*")
+				.order("created_at", { ascending: false }),
+			supabase
+				.from("leads")
+				.select("id, created_at, location, service")
+				.order("created_at", { ascending: false }),
+			supabase
+				.from("page_views")
+				.select("id, path, created_at")
+				.order("created_at", { ascending: false }),
+		]);
 
 	const allPosts: Post[] = posts ?? [];
+	const allLeads = leads ?? [];
+	const allPageViews = pageViews ?? [];
 	const published = allPosts.filter((p) => p.published).length;
 	const drafts = allPosts.filter((p) => !p.published).length;
-	const totalLeads = (leads ?? []).length;
+	const totalLeads = allLeads.length;
+
+	const today = new Date();
+	today.setHours(0, 0, 0, 0);
+	const viewsToday = allPageViews.filter(
+		(v) => new Date(v.created_at) >= today,
+	).length;
 
 	return (
 		<div>
@@ -37,12 +65,31 @@ export default async function AdminPage() {
 			</div>
 
 			{/* Stats row */}
-			<div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+			<div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
 				{[
-					{ icon: FileText, label: "Total Posts", value: allPosts.length },
+					{
+						icon: Eye,
+						label: "Total Views",
+						value: allPageViews.length,
+					},
+					{
+						icon: TrendingUp,
+						label: "Views Today",
+						value: viewsToday,
+					},
+					{
+						icon: FileText,
+						label: "Total Posts",
+						value: allPosts.length,
+					},
 					{ icon: Globe, label: "Published", value: published },
 					{ icon: FileEdit, label: "Drafts", value: drafts },
-					{ icon: Users, label: "Leads", value: totalLeads, href: "/admin/leads" },
+					{
+						icon: Users,
+						label: "Leads",
+						value: totalLeads,
+						href: "/admin/leads",
+					},
 				].map((stat) => {
 					const Icon = stat.icon;
 					const card = (
@@ -53,7 +100,9 @@ export default async function AdminPage() {
 							<p className="text-2xl font-extrabold text-foreground">
 								{stat.value}
 							</p>
-							<p className="text-xs text-muted-foreground">{stat.label}</p>
+							<p className="text-xs text-muted-foreground">
+								{stat.label}
+							</p>
 						</div>
 					);
 					return stat.href ? (
@@ -66,9 +115,26 @@ export default async function AdminPage() {
 				})}
 			</div>
 
+			{/* Analytics charts */}
+			<div className="mb-2">
+				<h2 className="text-base font-bold text-foreground">
+					Analytics
+				</h2>
+				<p className="mt-0.5 text-xs text-muted-foreground">
+					Visitors, leads, and content performance overview.
+				</p>
+			</div>
+			<DashboardCharts
+				leads={allLeads}
+				posts={allPosts}
+				pageViews={allPageViews}
+			/>
+
 			{/* Posts table */}
 			<div className="mb-2 flex items-center justify-between">
-				<h2 className="text-base font-bold text-foreground">Blog Posts</h2>
+				<h2 className="text-base font-bold text-foreground">
+					Blog Posts
+				</h2>
 				<Link
 					href="/admin/posts/new"
 					className="text-xs font-semibold text-primary hover:underline"

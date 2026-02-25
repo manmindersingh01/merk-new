@@ -9,6 +9,7 @@ import {
 	ExternalLink,
 	LogOut,
 	ChevronRight,
+	Briefcase,
 } from "lucide-react";
 import { logoutAction } from "@/app/admin/login/actions";
 
@@ -24,6 +25,12 @@ const NAV = [
 		href: "/admin/posts/new",
 		icon: FileText,
 		matchPrefix: "/admin/posts",
+	},
+	{
+		label: "Case Studies",
+		href: "/admin/case-studies",
+		icon: Briefcase,
+		matchPrefix: "/admin/case-studies",
 	},
 	{
 		label: "Leads",

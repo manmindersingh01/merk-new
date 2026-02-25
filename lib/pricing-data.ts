@@ -40,7 +40,7 @@ export const pricingTiers: PricingTier[] = [
 			"Limited survey templates",
 		],
 		cta: "Request Quote",
-		ctaHref: "/contact",
+		ctaHref: "/contact?plan=Basic&source=pricing_page",
 	},
 	{
 		id: "growth",
@@ -60,7 +60,7 @@ export const pricingTiers: PricingTier[] = [
 			"Priority email + chat support",
 		],
 		cta: "Request Quote",
-		ctaHref: "/contact",
+		ctaHref: "/contact?plan=Growth&source=pricing_page",
 	},
 	{
 		id: "professional",
@@ -80,7 +80,7 @@ export const pricingTiers: PricingTier[] = [
 			"Dedicated account manager",
 		],
 		cta: "Request Quote",
-		ctaHref: "/contact",
+		ctaHref: "/contact?plan=Professional&source=pricing_page",
 	},
 	{
 		id: "enterprise",
@@ -100,7 +100,7 @@ export const pricingTiers: PricingTier[] = [
 			"Senior Manager + SLA",
 		],
 		cta: "Request Quote",
-		ctaHref: "/contact",
+		ctaHref: "/contact?plan=Enterprise&source=pricing_page",
 	},
 ];
 

@@ -14,7 +14,7 @@ const plans = [
 		description:
 			"Self-service access to our global panel and AI survey builder. Launch research in minutes with no commitment.",
 		cta: "Start for free",
-		href: "/contact",
+		href: "/contact?plan=Starter&source=home_pricing",
 		featured: false,
 		features: [
 			"AI Survey Builder",
@@ -32,7 +32,7 @@ const plans = [
 		description:
 			"Advanced methodologies, team collaboration, and custom branding — for teams moving from data collection to strategic insight.",
 		cta: "Book a demo",
-		href: "/contact",
+		href: "/contact?plan=Professional&source=home_pricing",
 		featured: true,
 		features: [
 			"Everything in Starter",
@@ -50,7 +50,7 @@ const plans = [
 		description:
 			"A hybrid of full DIY platform access and dedicated project support — for high-volume, mission-critical research programmes.",
 		cta: "Talk to sales",
-		href: "/contact",
+		href: "/contact?plan=Enterprise&source=home_pricing",
 		featured: false,
 		features: [
 			"Everything in Professional",

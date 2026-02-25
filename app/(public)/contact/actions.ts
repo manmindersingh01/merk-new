@@ -1,6 +1,6 @@
 "use server";
 
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { headers } from "next/headers";
 
 export type ContactResult = { success: true } | { success: false; error: string };
@@ -32,6 +32,8 @@ export async function submitContact(formData: FormData): Promise<ContactResult> 
 	const service = ((formData.get("service") as string) || "").trim();
 	const message = ((formData.get("message") as string) || "").trim();
 	const locationInput = ((formData.get("location") as string) || "").trim();
+	const plan = ((formData.get("plan") as string) || "").trim();
+	const source = ((formData.get("source") as string) || "").trim();
 
 	if (!name || !email) {
 		return { success: false, error: "Name and email are required." };
@@ -64,6 +66,8 @@ export async function submitContact(formData: FormData): Promise<ContactResult> 
 			location,
 			location_source: locationSource,
 			ip_location: ipLocation,
+			plan: plan || null,
+			source: source || null,
 		},
 	]);
 

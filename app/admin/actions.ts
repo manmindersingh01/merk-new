@@ -1,6 +1,7 @@
 "use server";
 
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase-admin";
+import { requireAdmin } from "@/lib/admin-auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { PostInsert } from "@/types/blog";
@@ -20,6 +21,8 @@ function calcReadTime(content: string): number {
 }
 
 export async function createPost(formData: FormData) {
+	await requireAdmin();
+
 	const title = formData.get("title") as string;
 	const excerpt = formData.get("excerpt") as string;
 	const content = formData.get("content") as string;
@@ -54,7 +57,7 @@ export async function createPost(formData: FormData) {
 		read_time,
 	};
 
-	const { error } = await supabase.from("posts").insert([payload]);
+	const { error } = await supabaseAdmin.from("posts").insert([payload]);
 	if (error) throw new Error(error.message);
 
 	revalidatePath("/blog");
@@ -63,6 +66,8 @@ export async function createPost(formData: FormData) {
 }
 
 export async function updatePost(id: string, formData: FormData) {
+	await requireAdmin();
+
 	const title = formData.get("title") as string;
 	const excerpt = formData.get("excerpt") as string;
 	const content = formData.get("content") as string;
@@ -94,7 +99,10 @@ export async function updatePost(id: string, formData: FormData) {
 		read_time,
 	};
 
-	const { error } = await supabase.from("posts").update(payload).eq("id", id);
+	const { error } = await supabaseAdmin
+		.from("posts")
+		.update(payload)
+		.eq("id", id);
 	if (error) throw new Error(error.message);
 
 	revalidatePath("/blog");
@@ -103,7 +111,9 @@ export async function updatePost(id: string, formData: FormData) {
 }
 
 export async function deletePost(id: string) {
-	const { error } = await supabase.from("posts").delete().eq("id", id);
+	await requireAdmin();
+
+	const { error } = await supabaseAdmin.from("posts").delete().eq("id", id);
 	if (error) throw new Error(error.message);
 
 	revalidatePath("/blog");
@@ -111,7 +121,9 @@ export async function deletePost(id: string) {
 }
 
 export async function togglePublish(id: string, currentState: boolean) {
-	const { error } = await supabase
+	await requireAdmin();
+
+	const { error } = await supabaseAdmin
 		.from("posts")
 		.update({
 			published: !currentState,
