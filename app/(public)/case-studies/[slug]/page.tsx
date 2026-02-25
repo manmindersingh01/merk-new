@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
@@ -24,9 +25,69 @@ interface CaseStudyPageProps {
 	params: Promise<{ slug: string }>;
 }
 
-export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
-	const { slug } = await params;
+async function RelatedCaseStudies({
+	caseStudyId,
+	industry,
+}: {
+	caseStudyId: string;
+	industry: string | null;
+}) {
+	if (!industry) return null;
 
+	const { data: related } = await supabase
+		.from("case_studies")
+		.select("*")
+		.eq("published", true)
+		.eq("industry", industry)
+		.neq("id", caseStudyId)
+		.limit(3);
+
+	const relatedItems: CaseStudy[] = related ?? [];
+	if (!relatedItems.length) return null;
+
+	return (
+		<section className="border-t border-border/40 bg-card/40 px-4 py-16 sm:px-6 md:px-10">
+			<div className="mx-auto max-w-6xl">
+				<h2 className="mb-8 text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
+					More in {industry}
+				</h2>
+				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{relatedItems.map((item) => (
+						<CaseStudyCard key={item.id} caseStudy={item} />
+					))}
+				</div>
+			</div>
+		</section>
+	);
+}
+
+function RelatedSkeleton() {
+	return (
+		<section className="border-t border-border/40 bg-card/40 px-4 py-16 sm:px-6 md:px-10">
+			<div className="mx-auto max-w-6xl">
+				<div className="mb-8 h-7 w-44 animate-pulse rounded-md bg-muted/50" />
+				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+					{Array.from({ length: 3 }).map((_, i) => (
+						<div
+							key={i}
+							className="overflow-hidden rounded-2xl border border-border/40 bg-card"
+						>
+							<div className="h-44 animate-pulse rounded-none bg-muted/50" />
+							<div className="flex flex-col gap-3 p-5">
+								<div className="h-3 w-20 animate-pulse rounded-md bg-muted/50" />
+								<div className="h-5 w-4/5 animate-pulse rounded-md bg-muted/50" />
+								<div className="h-3 w-full animate-pulse rounded-md bg-muted/50" />
+								<div className="h-3 w-2/3 animate-pulse rounded-md bg-muted/50" />
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	);
+}
+
+async function CaseStudyContent({ slug }: { slug: string }) {
 	const { data, error } = await supabase
 		.from("case_studies")
 		.select("*")
@@ -37,17 +98,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 	if (error || !data) notFound();
 
 	const cs = data as CaseStudy;
-
-	// Related — same industry, excluding current
-	const { data: related } = await supabase
-		.from("case_studies")
-		.select("*")
-		.eq("published", true)
-		.eq("industry", cs.industry ?? "")
-		.neq("id", cs.id)
-		.limit(3);
-
-	const relatedItems: CaseStudy[] = related ?? [];
 	const gradient =
 		industryGradients[cs.industry ?? ""] ?? "from-primary to-primary/60";
 
@@ -60,11 +110,11 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 		: null;
 
 	return (
-		<div className="min-h-screen bg-background">
+		<>
 			{/* Hero */}
 			<div
 				className={cn(
-					"relative flex min-h-72 items-end bg-gradient-to-br pt-28 sm:min-h-[420px]",
+					"relative flex min-h-72 items-end bg-linear-to-br pt-28 sm:min-h-105",
 					gradient,
 				)}
 			>
@@ -76,7 +126,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 						className="absolute inset-0 h-full w-full object-cover"
 					/>
 				)}
-				<div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent" />
+				<div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/30 to-transparent" />
 				<div className="relative mx-auto w-full max-w-4xl px-4 pb-10 sm:px-6 md:px-10">
 					<Link
 						href="/case-studies"
@@ -164,21 +214,69 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 				</div>
 			</article>
 
-			{/* Related */}
-			{relatedItems.length > 0 && (
-				<section className="border-t border-border/40 bg-card/40 px-4 py-16 sm:px-6 md:px-10">
-					<div className="mx-auto max-w-6xl">
-						<h2 className="mb-8 text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
-							More in {cs.industry}
-						</h2>
-						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-							{relatedItems.map((item) => (
-								<CaseStudyCard key={item.id} caseStudy={item} />
-							))}
+			{/* Related — streams in after main content */}
+			<Suspense fallback={<RelatedSkeleton />}>
+				<RelatedCaseStudies caseStudyId={cs.id} industry={cs.industry} />
+			</Suspense>
+		</>
+	);
+}
+
+function CaseStudySkeleton() {
+	return (
+		<>
+			{/* Hero skeleton */}
+			<div className="relative flex min-h-72 items-end pt-28 sm:min-h-105">
+				<div className="absolute inset-0 animate-pulse bg-muted/40" />
+				<div className="relative mx-auto w-full max-w-4xl px-4 pb-10 sm:px-6 md:px-10">
+					<div className="mb-6 h-4 w-36 animate-pulse rounded-md bg-muted/60" />
+					<div className="mb-3 h-4 w-28 animate-pulse rounded-full bg-muted/60" />
+					<div className="h-9 w-3/4 animate-pulse rounded-md bg-muted/60" />
+					<div className="mt-2 h-9 w-1/2 animate-pulse rounded-md bg-muted/60" />
+				</div>
+			</div>
+
+			{/* Metrics bar skeleton */}
+			<div className="border-b border-border/40 bg-card px-4 py-5 sm:px-6 md:px-10">
+				<div className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-8 gap-y-3">
+					{Array.from({ length: 3 }).map((_, i) => (
+						<div key={i} className="flex items-center gap-2.5">
+							<div className="size-8 animate-pulse rounded-lg bg-muted/50" />
+							<div className="flex flex-col gap-1.5">
+								<div className="h-2.5 w-12 animate-pulse rounded-md bg-muted/50" />
+								<div className="h-3.5 w-20 animate-pulse rounded-md bg-muted/50" />
+							</div>
 						</div>
-					</div>
-				</section>
-			)}
+					))}
+				</div>
+			</div>
+
+			{/* Article skeleton */}
+			<article className="px-4 py-12 sm:px-6 sm:py-16 md:px-10">
+				<div className="mx-auto max-w-4xl space-y-3">
+					<div className="h-5 w-full animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-5/6 animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-4/5 animate-pulse rounded-md bg-muted/50" />
+					<div className="mt-6 h-5 w-full animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-3/4 animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-full animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-2/3 animate-pulse rounded-md bg-muted/50" />
+					<div className="mt-6 h-5 w-full animate-pulse rounded-md bg-muted/50" />
+					<div className="h-5 w-4/5 animate-pulse rounded-md bg-muted/50" />
+				</div>
+			</article>
+		</>
+	);
+}
+
+export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
+	const { slug } = await params;
+
+	return (
+		<div className="min-h-screen bg-background">
+			<Suspense fallback={<CaseStudySkeleton />}>
+				<CaseStudyContent slug={slug} />
+			</Suspense>
 		</div>
 	);
 }
