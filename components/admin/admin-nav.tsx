@@ -22,7 +22,7 @@ const NAV = [
 	},
 	{
 		label: "Blog Posts",
-		href: "/admin/posts/new",
+		href: "/admin/posts",
 		icon: FileText,
 		matchPrefix: "/admin/posts",
 	},

@@ -1,10 +1,8 @@
 import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
-import { PostsTable } from "@/components/admin/posts-table";
 import { DashboardCharts } from "@/components/admin/dashboard-charts";
 import { Post } from "@/types/blog";
 import Link from "next/link";
 import {
-	Plus,
 	FileText,
 	Globe,
 	FileEdit,
@@ -12,7 +10,6 @@ import {
 	Eye,
 	TrendingUp,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export default async function AdminPage() {
 	const [{ data: posts }, { data: leads }, { data: pageViews }] =
@@ -47,21 +44,13 @@ export default async function AdminPage() {
 	return (
 		<div>
 			{/* Page header */}
-			<div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-				<div>
-					<h1 className="text-2xl font-extrabold tracking-tight text-foreground">
-						Dashboard
-					</h1>
-					<p className="mt-1 text-sm text-muted-foreground">
-						Manage your blog posts and leads.
-					</p>
-				</div>
-				<Link href="/admin/posts/new">
-					<Button size="sm" className="rounded-xl px-5 font-medium">
-						<Plus className="mr-1 size-4" />
-						New Post
-					</Button>
-				</Link>
+			<div className="mb-8">
+				<h1 className="text-2xl font-extrabold tracking-tight text-foreground">
+					Dashboard
+				</h1>
+				<p className="mt-1 text-sm text-muted-foreground">
+					Overview of your content, leads, and site performance.
+				</p>
 			</div>
 
 			{/* Stats row */}
@@ -130,19 +119,6 @@ export default async function AdminPage() {
 				pageViews={allPageViews}
 			/>
 
-			{/* Posts table */}
-			<div className="mb-2 flex items-center justify-between">
-				<h2 className="text-base font-bold text-foreground">
-					Blog Posts
-				</h2>
-				<Link
-					href="/admin/posts/new"
-					className="text-xs font-semibold text-primary hover:underline"
-				>
-					+ New post
-				</Link>
 			</div>
-			<PostsTable posts={allPosts} />
-		</div>
 	);
 }
