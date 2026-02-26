@@ -1,50 +1,53 @@
 import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
-import { BlogCard } from "@/components/blog/blog-card";
-import { Post } from "@/types/blog";
-import { ArrowRight, Rss } from "lucide-react";
+import { CaseStudyCard } from "@/components/case-studies/case-study-card";
+import { CaseStudy } from "@/types/case-study";
+import { ArrowRight, BarChart3 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const CATEGORIES = [
+const INDUSTRIES = [
 	"All",
-	"Industry Insights",
-	"Methodology",
 	"Technology",
-	"Strategy",
-	"Research",
+	"Healthcare",
+	"Financial Services",
+	"Retail & E-commerce",
+	"Consumer Goods",
+	"Manufacturing",
+	"Media & Entertainment",
+	"Education",
+	"Real Estate",
+	"Energy",
 ];
 
-interface BlogPageProps {
-	searchParams: Promise<{ category?: string }>;
+interface CaseStudiesPageProps {
+	searchParams: Promise<{ industry?: string }>;
 }
 
-async function PostsList({ category }: { category: string }) {
+async function CaseStudiesList({ industry }: { industry: string }) {
 	let query = supabase
-		.from("posts")
+		.from("case_studies")
 		.select("*")
 		.eq("published", true)
 		.order("published_at", { ascending: false });
 
-	if (category !== "All") {
-		query = query.eq("category", category);
+	if (industry !== "All") {
+		query = query.eq("industry", industry);
 	}
 
-	const { data: posts, error } = await query;
+	const { data, error } = await query;
 
-	if (error) {
-		console.error("Error fetching posts:", error);
-	}
+	if (error) console.error("Error fetching case studies:", error);
 
-	const allPosts: Post[] = posts ?? [];
-	const featuredPost = allPosts[0] ?? null;
-	const restPosts = allPosts.slice(1);
+	const all: CaseStudy[] = data ?? [];
+	const featured = all[0] ?? null;
+	const rest = all.slice(1);
 
-	if (allPosts.length === 0) {
+	if (all.length === 0) {
 		return (
 			<div className="rounded-2xl border border-border/40 bg-card px-8 py-20 text-center">
 				<p className="text-muted-foreground">
-					No posts in this category yet. Check back soon.
+					No case studies in this category yet. Check back soon.
 				</p>
 			</div>
 		);
@@ -52,15 +55,15 @@ async function PostsList({ category }: { category: string }) {
 
 	return (
 		<>
-			{featuredPost && (
+			{featured && (
 				<div className="mb-10">
-					<BlogCard post={featuredPost} featured />
+					<CaseStudyCard caseStudy={featured} featured />
 				</div>
 			)}
-			{restPosts.length > 0 && (
+			{rest.length > 0 && (
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{restPosts.map((post) => (
-						<BlogCard key={post.id} post={post} />
+					{rest.map((cs) => (
+						<CaseStudyCard key={cs.id} caseStudy={cs} />
 					))}
 				</div>
 			)}
@@ -68,10 +71,10 @@ async function PostsList({ category }: { category: string }) {
 	);
 }
 
-function PostsSkeleton() {
+function CaseStudiesSkeleton() {
 	return (
 		<>
-			{/* Featured post skeleton */}
+			{/* Featured skeleton */}
 			<div className="mb-10 overflow-hidden rounded-2xl border border-border/40 bg-card">
 				<div className="grid md:grid-cols-2">
 					<div className="h-64 animate-pulse rounded-none bg-muted/50 md:h-full" />
@@ -107,28 +110,30 @@ function PostsSkeleton() {
 	);
 }
 
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-	const { category } = await searchParams;
-	const activeCategory = category ?? "All";
+export default async function CaseStudiesPage({
+	searchParams,
+}: CaseStudiesPageProps) {
+	const { industry } = await searchParams;
+	const activeIndustry = industry ?? "All";
 
 	return (
 		<div className="min-h-screen bg-background">
-			{/* Hero — renders immediately, no data dependency */}
-			<section className="px-4 pt-28 pb-16 sm:px-6 md:px-10 md:pt-36 lg:px-16">
+			{/* Hero — renders immediately */}
+			<section className="px-4 pb-16 pt-28 sm:px-6 md:px-10 md:pt-36 lg:px-16">
 				<div className="mx-auto max-w-6xl">
 					<div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
 						<div>
 							<div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/60 px-3 py-1 text-xs text-muted-foreground">
-								<Rss className="size-3 text-primary" />
-								Research &amp; Insights
+								<BarChart3 className="size-3 text-primary" />
+								Real-World Impact
 							</div>
 							<h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-								MerkMetryx{" "}
-								<span className="text-primary">Insights</span>
+								Case{" "}
+								<span className="text-primary">Studies</span>
 							</h1>
 							<p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-								Perspectives on market research, AI-powered intelligence, and
-								the strategies shaping modern business decisions.
+								See how leading brands use MerkMetryx to turn research into
+								decisions that drive measurable growth.
 							</p>
 						</div>
 						<Link href="/contact">
@@ -137,40 +142,40 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 								size="sm"
 								className="shrink-0 rounded-full px-5"
 							>
-								Subscribe to updates
+								Work with us
 								<ArrowRight className="ml-1 size-3.5" />
 							</Button>
 						</Link>
 					</div>
 
-					{/* Category filter */}
+					{/* Industry filter */}
 					<div className="mt-10 flex flex-wrap gap-2">
-						{CATEGORIES.map((cat) => (
+						{INDUSTRIES.map((ind) => (
 							<Link
-								key={cat}
+								key={ind}
 								href={
-									cat === "All"
-										? "/blog"
-										: `/blog?category=${encodeURIComponent(cat)}`
+									ind === "All"
+										? "/case-studies"
+										: `/case-studies?industry=${encodeURIComponent(ind)}`
 								}
 								className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-									activeCategory === cat
+									activeIndustry === ind
 										? "border-primary bg-primary text-primary-foreground"
 										: "border-border/40 bg-card text-muted-foreground hover:text-foreground"
 								}`}
 							>
-								{cat}
+								{ind}
 							</Link>
 						))}
 					</div>
 				</div>
 			</section>
 
-			{/* Posts — streams in independently */}
+			{/* Content — streams in independently */}
 			<section className="px-4 pb-24 sm:px-6 md:px-10 lg:px-16">
 				<div className="mx-auto max-w-6xl">
-					<Suspense fallback={<PostsSkeleton />}>
-						<PostsList category={activeCategory} />
+					<Suspense fallback={<CaseStudiesSkeleton />}>
+						<CaseStudiesList industry={activeIndustry} />
 					</Suspense>
 				</div>
 			</section>

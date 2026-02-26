@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { PageViewTracker } from "@/components/providers/page-view-tracker";
 
 export default function PublicLayout({
 	children,
@@ -8,6 +9,7 @@ export default function PublicLayout({
 }) {
 	return (
 		<>
+			<PageViewTracker />
 			<Navbar />
 			{children}
 			<Footer />

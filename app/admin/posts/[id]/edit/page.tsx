@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { PostForm } from "@/components/admin/post-form";
 import { Post } from "@/types/blog";
 import { notFound } from "next/navigation";

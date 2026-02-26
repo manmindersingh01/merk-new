@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
-import { createPost, updatePost } from "@/app/admin/actions";
-import { Post } from "@/types/blog";
+import { createCaseStudy, updateCaseStudy } from "@/app/admin/case-studies/actions";
+import { CaseStudy } from "@/types/case-study";
 import { Button } from "@/components/ui/button";
 import {
 	ArrowLeft,
@@ -16,33 +16,38 @@ import Link from "next/link";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { supabase } from "@/lib/supabase";
 
-const CATEGORIES = [
-	"Industry Insights",
-	"Methodology",
+const INDUSTRIES = [
 	"Technology",
-	"Strategy",
-	"Research",
+	"Healthcare",
+	"Financial Services",
+	"Retail & E-commerce",
+	"Consumer Goods",
+	"Manufacturing",
+	"Media & Entertainment",
+	"Education",
+	"Real Estate",
+	"Energy",
 ];
 
-const BUCKET = "blog-images";
+const BUCKET = "case-study-images";
 
-interface PostFormProps {
-	post?: Post;
+interface CaseStudyFormProps {
+	caseStudy?: CaseStudy;
 }
 
-export function PostForm({ post }: PostFormProps) {
-	const isEdit = Boolean(post);
+export function CaseStudyForm({ caseStudy }: CaseStudyFormProps) {
+	const isEdit = Boolean(caseStudy);
 	const [isPending, startTransition] = useTransition();
 	const [preview, setPreview] = useState(false);
-	const [content, setContent] = useState(post?.content ?? "");
-	const [published, setPublished] = useState(post?.published ?? false);
+	const [content, setContent] = useState(caseStudy?.content ?? "");
+	const [published, setPublished] = useState(caseStudy?.published ?? false);
 	const [error, setError] = useState<string | null>(null);
 
-	// Cover image state — tracks the final URL (uploaded or manual)
+	// Cover image state
 	const [coverImageUrl, setCoverImageUrl] = useState(
-		post?.cover_image_url ?? "",
+		caseStudy?.cover_image_url ?? "",
 	);
-	const [urlInput, setUrlInput] = useState(post?.cover_image_url ?? "");
+	const [urlInput, setUrlInput] = useState(caseStudy?.cover_image_url ?? "");
 	const [uploadingImage, setUploadingImage] = useState(false);
 	const [uploadError, setUploadError] = useState<string | null>(null);
 	const [dragging, setDragging] = useState(false);
@@ -50,9 +55,7 @@ export function PostForm({ post }: PostFormProps) {
 
 	async function handleImageUpload(file: File) {
 		if (!file.type.startsWith("image/")) {
-			setUploadError(
-				"Please select a valid image file (PNG, JPG, WebP, GIF).",
-			);
+			setUploadError("Please select a valid image file (PNG, JPG, WebP, GIF).");
 			return;
 		}
 		if (file.size > 5 * 1024 * 1024) {
@@ -94,11 +97,6 @@ export function PostForm({ post }: PostFormProps) {
 		if (file) handleImageUpload(file);
 	}
 
-	function handleUrlChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setUrlInput(e.target.value);
-		setCoverImageUrl(e.target.value);
-	}
-
 	function handleRemoveImage() {
 		setCoverImageUrl("");
 		setUrlInput("");
@@ -115,10 +113,10 @@ export function PostForm({ post }: PostFormProps) {
 
 		startTransition(async () => {
 			try {
-				if (isEdit && post) {
-					await updatePost(post.id, formData);
+				if (isEdit && caseStudy) {
+					await updateCaseStudy(caseStudy.id, formData);
 				} else {
-					await createPost(formData);
+					await createCaseStudy(formData);
 				}
 			} catch (err) {
 				setError(err instanceof Error ? err.message : "Something went wrong.");
@@ -130,15 +128,20 @@ export function PostForm({ post }: PostFormProps) {
 		<div>
 			{/* Header */}
 			<div className="mb-8 flex items-center gap-4">
-				<Link href="/admin" className="text-muted-foreground hover:text-foreground">
+				<Link
+					href="/admin/case-studies"
+					className="text-muted-foreground hover:text-foreground"
+				>
 					<ArrowLeft className="size-5" />
 				</Link>
 				<div>
 					<h1 className="text-2xl font-extrabold tracking-tight text-foreground">
-						{isEdit ? "Edit Post" : "New Post"}
+						{isEdit ? "Edit Case Study" : "New Case Study"}
 					</h1>
 					<p className="mt-0.5 text-sm text-muted-foreground">
-						{isEdit ? `Editing "${post?.title}"` : "Create a new blog post"}
+						{isEdit
+							? `Editing "${caseStudy?.title}"`
+							: "Create a new case study"}
 					</p>
 				</div>
 			</div>
@@ -161,8 +164,8 @@ export function PostForm({ post }: PostFormProps) {
 							<input
 								name="title"
 								required
-								defaultValue={post?.title ?? ""}
-								placeholder="Your post title..."
+								defaultValue={caseStudy?.title ?? ""}
+								placeholder="How we helped Acme Corp grow 3x..."
 								className="w-full rounded-xl border border-border/40 bg-background px-4 py-2.5 text-base font-semibold text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
 							/>
 						</div>
@@ -175,8 +178,8 @@ export function PostForm({ post }: PostFormProps) {
 							<textarea
 								name="excerpt"
 								rows={2}
-								defaultValue={post?.excerpt ?? ""}
-								placeholder="A short summary shown on the blog listing..."
+								defaultValue={caseStudy?.excerpt ?? ""}
+								placeholder="A short summary of the challenge, approach, and outcome..."
 								className="w-full resize-none rounded-xl border border-border/40 bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
 							/>
 						</div>
@@ -219,7 +222,7 @@ export function PostForm({ post }: PostFormProps) {
 									value={content}
 									onChange={(e) => setContent(e.target.value)}
 									rows={20}
-									placeholder={`# Your heading\n\nWrite your post in Markdown...\n\n## Section heading\n\nParagraph text here.`}
+									placeholder={`## The Challenge\n\nDescribe the problem the client faced...\n\n## Our Approach\n\nExplain the methodology used...\n\n## Results\n\nShare the measurable outcomes...`}
 									className="w-full resize-y rounded-xl border border-border/40 bg-background px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-primary/30"
 								/>
 							)}
@@ -229,7 +232,7 @@ export function PostForm({ post }: PostFormProps) {
 						</div>
 					</div>
 
-					{/* Sidebar fields */}
+					{/* Sidebar */}
 					<div className="flex flex-col gap-5">
 						{/* Publish controls */}
 						<div className="rounded-2xl border border-border/40 bg-card p-5">
@@ -271,68 +274,57 @@ export function PostForm({ post }: PostFormProps) {
 								) : isEdit ? (
 									"Save Changes"
 								) : (
-									"Create Post"
+									"Create Case Study"
 								)}
 							</Button>
 						</div>
 
-						{/* Author */}
+						{/* Client & Industry */}
 						<div className="rounded-2xl border border-border/40 bg-card p-5">
 							<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-								Author
+								Client
 							</label>
 							<input
-								name="author"
-								defaultValue={post?.author ?? "MerkMetryx Team"}
-								className="mb-3 w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+								name="client"
+								defaultValue={caseStudy?.client ?? ""}
+								placeholder="Acme Corporation"
+								className="mb-4 w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
 							/>
-							<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-								Author Role
-							</label>
-							<input
-								name="author_role"
-								defaultValue={post?.author_role ?? ""}
-								placeholder="e.g. Senior Research Analyst"
-								className="w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
-							/>
-						</div>
 
-						{/* Category */}
-						<div className="rounded-2xl border border-border/40 bg-card p-5">
 							<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-								Category
+								Industry
 							</label>
 							<select
-								name="category"
-								defaultValue={post?.category ?? ""}
+								name="industry"
+								defaultValue={caseStudy?.industry ?? ""}
 								className="w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
 							>
-								<option value="">Select category…</option>
-								{CATEGORIES.map((c) => (
-									<option key={c} value={c}>
-										{c}
+								<option value="">Select industry…</option>
+								{INDUSTRIES.map((i) => (
+									<option key={i} value={i}>
+										{i}
 									</option>
 								))}
 							</select>
 						</div>
 
-						{/* Tags */}
+						{/* Results */}
 						<div className="rounded-2xl border border-border/40 bg-card p-5">
 							<label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-								Tags
+								Key Result
 							</label>
 							<input
-								name="tags"
-								defaultValue={post?.tags?.join(", ") ?? ""}
-								placeholder="AI, market research, pricing"
+								name="results"
+								defaultValue={caseStudy?.results ?? ""}
+								placeholder="e.g. 3× revenue growth in 6 months"
 								className="w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
 							/>
 							<p className="mt-1.5 text-[11px] text-muted-foreground">
-								Comma-separated
+								A short headline metric shown on the card
 							</p>
 						</div>
 
-						{/* Cover image upload */}
+						{/* Cover image */}
 						<div className="rounded-2xl border border-border/40 bg-card p-5">
 							<label className="mb-3 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
 								Cover Image
@@ -363,7 +355,6 @@ export function PostForm({ post }: PostFormProps) {
 									</button>
 								</div>
 							) : (
-								/* Drop zone */
 								<div
 									onDragOver={(e) => {
 										e.preventDefault();
@@ -392,7 +383,6 @@ export function PostForm({ post }: PostFormProps) {
 								</div>
 							)}
 
-							{/* Replace button (shown when an image is already set) */}
 							{coverImageUrl && (
 								<button
 									type="button"
@@ -409,7 +399,6 @@ export function PostForm({ post }: PostFormProps) {
 								</button>
 							)}
 
-							{/* Hidden file input */}
 							<input
 								ref={fileInputRef}
 								type="file"
@@ -418,19 +407,21 @@ export function PostForm({ post }: PostFormProps) {
 								onChange={handleFileChange}
 							/>
 
-							{/* Manual URL fallback */}
 							<p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60">
 								or paste a URL
 							</p>
 							<input
 								type="url"
 								value={urlInput}
-								onChange={handleUrlChange}
+								onChange={(e) => {
+									setUrlInput(e.target.value);
+									setCoverImageUrl(e.target.value);
+								}}
 								placeholder="https://..."
 								className="w-full rounded-xl border border-border/40 bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30"
 							/>
 							<p className="mt-1.5 text-[11px] text-muted-foreground">
-								Leave blank to use a category gradient
+								Leave blank to use an industry gradient
 							</p>
 						</div>
 					</div>
