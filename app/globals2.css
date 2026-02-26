@@ -1,0 +1,266 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--font-sans: "Roboto", sans-serif;
+	--font-mono: JetBrains Mono, monospace;
+	--font-serif: serif;
+	--radius: 0.75rem;
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--radius-2xl: calc(var(--radius) + 8px);
+	--radius-3xl: calc(var(--radius) + 12px);
+	--radius-4xl: calc(var(--radius) + 16px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ===============================
+   OPTION 2 – LIGHT MODE (Modern Blue)
+================================ */
+:root {
+	--background: #f6f9fb;
+	--foreground: #1f2937; /* slate-800 */
+
+	--card: #ffffff;
+	--card-foreground: #1f2937;
+
+	--popover: #ffffff;
+	--popover-foreground: #1f2937;
+
+	/* Primary – Modern Professional Blue */
+	--primary: #1e88a8;
+	--primary-foreground: #ffffff;
+
+	--secondary: #f1f5f9;
+	--secondary-foreground: #1f2937;
+
+	--muted: #f6f9fb;
+	--muted-foreground: #6b7280;
+
+	/* Accent = primary */
+	--accent: #1e88a8;
+	--accent-foreground: #ffffff;
+
+	--destructive: #dc2626;
+	--destructive-foreground: #ffffff;
+
+	--border: #e2e8f0;
+	--input: #e5e7eb;
+
+	--ring: #1e88a8;
+
+	/* Sidebar */
+	--sidebar: #ffffff;
+	--sidebar-foreground: #1f2937;
+	--sidebar-primary: #1e88a8;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #f1f5f9;
+	--sidebar-accent-foreground: #1f2937;
+	--sidebar-border: #e5e7eb;
+	--sidebar-ring: #1e88a8;
+
+	--radius: 0.75rem;
+}
+
+/* ===============================
+   OPTION 2 – DARK MODE
+================================ */
+.dark {
+	--background: #0f172a;
+	--foreground: #e5e7eb;
+
+	--card: #020617;
+	--card-foreground: #e5e7eb;
+
+	--popover: #020617;
+	--popover-foreground: #e5e7eb;
+
+	/* Primary – Modern Blue */
+	--primary: #4fb3d8;
+	--primary-foreground: #ffffff;
+
+	--secondary: #020617;
+	--secondary-foreground: #e5e7eb;
+
+	--muted: #020617;
+	--muted-foreground: #9ca3af;
+
+	--accent: #4fb3d8;
+	--accent-foreground: #ffffff;
+
+	--destructive: #ef4444;
+	--destructive-foreground: #ffffff;
+
+	--border: #1e293b;
+	--input: #1e293b;
+
+	--ring: #4fb3d8;
+
+	/* Sidebar */
+	--sidebar: #020617;
+	--sidebar-foreground: #e5e7eb;
+	--sidebar-primary: #4fb3d8;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #0f172a;
+	--sidebar-accent-foreground: #e5e7eb;
+	--sidebar-border: #1e293b;
+	--sidebar-ring: #4fb3d8;
+}
+
+@layer base {
+	body {
+		background: var(--background);
+		color: var(--foreground);
+	}
+}
+
+/* ===============================
+   Markdown / Blog prose styles
+================================ */
+.prose-custom {
+	color: var(--foreground);
+	font-size: 1rem;
+	line-height: 1.8;
+}
+.prose-custom h1,
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4 {
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	color: var(--foreground);
+	margin-top: 2em;
+	margin-bottom: 0.6em;
+	line-height: 1.25;
+}
+.prose-custom h1 { font-size: 1.875rem; }
+.prose-custom h2 { font-size: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4em; }
+.prose-custom h3 { font-size: 1.25rem; }
+.prose-custom h4 { font-size: 1.1rem; }
+.prose-custom p {
+	margin-bottom: 1.4em;
+	color: var(--foreground);
+}
+.prose-custom strong { font-weight: 700; color: var(--foreground); }
+.prose-custom em { font-style: italic; }
+.prose-custom a {
+	color: var(--primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.prose-custom a:hover { opacity: 0.8; }
+.prose-custom ul,
+.prose-custom ol {
+	margin-bottom: 1.4em;
+	padding-left: 1.6em;
+}
+.prose-custom ul { list-style-type: disc; }
+.prose-custom ol { list-style-type: decimal; }
+.prose-custom li { margin-bottom: 0.4em; }
+.prose-custom blockquote {
+	border-left: 4px solid var(--primary);
+	margin: 1.6em 0;
+	padding: 0.8em 1.2em;
+	background: color-mix(in srgb, var(--primary) 6%, transparent);
+	border-radius: 0 0.5rem 0.5rem 0;
+	color: var(--muted-foreground);
+	font-style: italic;
+}
+.prose-custom blockquote strong { color: var(--foreground); }
+.prose-custom code {
+	font-family: var(--font-mono);
+	font-size: 0.875em;
+	background: color-mix(in srgb, var(--primary) 8%, transparent);
+	color: var(--primary);
+	padding: 0.15em 0.45em;
+	border-radius: 0.3rem;
+}
+.prose-custom pre {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 0.75rem;
+	padding: 1.2em 1.4em;
+	overflow-x: auto;
+	margin-bottom: 1.4em;
+}
+.prose-custom pre code {
+	background: none;
+	padding: 0;
+	color: var(--foreground);
+	font-size: 0.875rem;
+}
+.prose-custom hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2.5em 0;
+}
+.prose-custom table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1.4em;
+	font-size: 0.9rem;
+}
+.prose-custom th {
+	background: color-mix(in srgb, var(--primary) 8%, transparent);
+	color: var(--foreground);
+	font-weight: 700;
+	padding: 0.6em 1em;
+	text-align: left;
+	border: 1px solid var(--border);
+}
+.prose-custom td {
+	padding: 0.55em 1em;
+	border: 1px solid var(--border);
+	color: var(--muted-foreground);
+}
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* 
+LIGHT
+#2F4FD8
+#F5F7FB
+#FFFFFF
+#1F2937
+#E2E8F0
+
+DARK
+#4F6EF7
+#0F172A
+#020617
+#E5E7EB
+#1E293B
+*/
