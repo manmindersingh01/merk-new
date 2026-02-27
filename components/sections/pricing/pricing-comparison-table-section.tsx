@@ -109,7 +109,7 @@ function renderCell(value: string | boolean) {
 		return value ? (
 			<Check className="mx-auto size-5 text-primary" />
 		) : (
-			<X className="mx-auto size-5 text-muted-foreground/40" />
+			<p className="text-primary font-extrabold" >—</p>
 		);
 	}
 
