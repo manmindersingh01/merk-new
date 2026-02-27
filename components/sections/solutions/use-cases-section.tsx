@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { TrendingUp, Search, Users, TestTube, DollarSign } from "lucide-react";
+import Image from "next/image";
 
 const useCases = [
 	{
@@ -86,6 +87,49 @@ export function UseCasesSection() {
 						);
 					})}
 				</div>
+
+				{/* Real-World Applications */}
+				<motion.div
+					initial={{ opacity: 0, y: 32 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, delay: 0.5 }}
+					className="mt-20 sm:mt-28"
+				>
+					<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+						{/* Image Column (LEFT) */}
+						<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+							<Image
+								src="/use-cases-section.png"
+								alt="MerkMetryx use cases including market sizing, competitor analysis, and pricing strategies"
+								width={1920}
+								height={1080}
+								className="w-full h-auto"
+								priority={false}
+							/>
+						</div>
+
+						{/* Text Column (RIGHT) */}
+						<div>
+							<p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+								Proven Applications
+							</p>
+							<h3 className="mt-2 text-xl font-extrabold leading-snug text-foreground sm:text-2xl md:text-3xl">
+								From concept validation to competitive intelligence — backed by evidence.
+							</h3>
+							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Whether you're sizing a market opportunity, testing pricing sensitivity,
+								or benchmarking against competitors, MerkMetryx delivers the strategic
+								intelligence you need before committing capital or resources.
+							</p>
+							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Our platform supports everything from rapid concept tests to comprehensive
+								TAM/SAM/SOM analyses — giving product teams, strategists, and executives
+								the confidence to launch with precision.
+							</p>
+						</div>
+					</div>
+				</motion.div>
 			</div>
 		</section>
 	);

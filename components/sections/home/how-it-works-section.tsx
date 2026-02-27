@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Database, Cpu, BrainCircuit, BarChart3 } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
 	{
@@ -91,6 +92,49 @@ export function HowItWorksSection() {
 						);
 					})}
 				</div>
+
+				{/* Visual Summary with Context */}
+				<motion.div
+					initial={{ opacity: 0, y: 32 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, delay: 0.4 }}
+					className="mt-20 sm:mt-28"
+				>
+					<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+						{/* Text Column */}
+						<div>
+							<p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+								Our Proven Process
+							</p>
+							<h3 className="mt-2 text-xl font-extrabold leading-snug text-foreground sm:text-2xl md:text-3xl">
+								From data chaos to strategic clarity — in under 48 hours.
+							</h3>
+							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Every MerkMetryx engagement follows this rigorous 4-stage pipeline,
+								engineered to eliminate guesswork and deliver boardroom-ready intelligence.
+								Our AI-powered methodology ensures you never make strategic decisions on
+								incomplete or biased data.
+							</p>
+							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								500+ data sources. 97% accuracy. Zero manual intervention. That's the
+								MerkMetryx advantage.
+							</p>
+						</div>
+
+						{/* Image Column */}
+						<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+							<Image
+								src="/how-it-works.png"
+								alt="MerkMetryx methodology workflow diagram showing the four-step research process"
+								width={1920}
+								height={1080}
+								className="w-full h-auto"
+								priority={false}
+							/>
+						</div>
+					</div>
+				</motion.div>
 			</div>
 		</section>
 	);

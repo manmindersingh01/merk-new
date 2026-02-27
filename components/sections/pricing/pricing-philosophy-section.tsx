@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { TrendingUp, DollarSign, Zap, Shield } from "lucide-react";
+import Image from "next/image";
 
 const principles = [
 	{
@@ -79,6 +80,50 @@ export function PricingPhilosophySection() {
 						);
 					})}
 				</div>
+
+				{/* Philosophy in Action */}
+				<motion.div
+					initial={{ opacity: 0, y: 32 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, delay: 0.5 }}
+					className="mt-20 sm:mt-28"
+				>
+					<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+						{/* Text Column */}
+						<div>
+							<p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+								Fair & Transparent
+							</p>
+							<h3 className="mt-2 text-xl font-extrabold leading-snug text-foreground sm:text-2xl md:text-3xl">
+								Pay for insights, not bureaucracy. Scale without penalties.
+							</h3>
+							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Traditional research firms lock you into annual contracts, charge per-seat,
+								and surprise you with scope creep fees. MerkMetryx operates differently.
+								You pay only for the research volume you consume — no hidden fees, no
+								surprise charges, no vendor lock-in.
+							</p>
+							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Start small with 1,000 responses per month. Scale to enterprise volumes
+								as your needs grow. Upgrade, downgrade, or pause anytime. Our pricing
+								grows with your success — never against it.
+							</p>
+						</div>
+
+						{/* Image Column */}
+						<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+							<Image
+								src="/pricing-philosophy.png"
+								alt="MerkMetryx pricing philosophy showing transparent, usage-based value model"
+								width={1920}
+								height={1080}
+								className="w-full h-auto"
+								priority={false}
+							/>
+						</div>
+					</div>
+				</motion.div>
 			</div>
 		</section>
 	);

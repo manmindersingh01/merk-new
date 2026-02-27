@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Separator } from "@/components/ui/separator";
 import { Database, Cpu, BrainCircuit, BarChart3, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
 	{
@@ -152,6 +153,48 @@ export function DataPipelineSection() {
 							)}
 						</div>
 					))}
+				</motion.div>
+
+				{/* Technical Architecture Overview */}
+				<motion.div
+					initial={{ opacity: 0, y: 32 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, delay: 0.6 }}
+					className="mt-16 sm:mt-20"
+				>
+					<div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+						{/* Text Column */}
+						<div>
+							<p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">
+								Enterprise Infrastructure
+							</p>
+							<h3 className="mt-2 text-xl font-extrabold leading-snug text-foreground sm:text-2xl md:text-3xl">
+								Built for scale. Engineered for accuracy. Optimized for speed.
+							</h3>
+							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								Our proprietary data pipeline processes 500+ simultaneous sources,
+								automatically cleanses and validates every record, and applies advanced
+								NLP and ML models — all before delivering presentation-ready insights
+								within 48 hours.
+							</p>
+							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+								<strong className="text-foreground">97% data accuracy.</strong> <strong className="text-foreground">99.8% bot rejection.</strong> <strong className="text-foreground">94% ML precision.</strong> These aren't promises — they're performance benchmarks validated across 500+ enterprise engagements.
+							</p>
+						</div>
+
+						{/* Image Column */}
+						<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+							<Image
+								src="/data-pipeline-section.png"
+								alt="MerkMetryx data pipeline architecture showing complete workflow from ingestion to delivery"
+								width={1920}
+								height={1080}
+								className="w-full h-auto"
+								priority={false}
+							/>
+						</div>
+					</div>
 				</motion.div>
 
 				<Separator className="mt-16" />

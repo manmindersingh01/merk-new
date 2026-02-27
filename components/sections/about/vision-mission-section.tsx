@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Target, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const sections = [
 	{
@@ -60,16 +61,18 @@ export function VisionMissionSection() {
 								</div>
 
 								{/* Visual side */}
-								<div className="rounded-2xl border border-border/40 bg-card p-8 sm:rounded-3xl sm:p-10">
-									<div className="flex flex-col items-center justify-center text-center">
-										<div className="mb-4 inline-flex size-16 items-center justify-center rounded-2xl bg-primary/10">
-											<Icon className="size-8 text-primary" />
-										</div>
-										<p className="text-xs font-semibold uppercase tracking-widest text-primary">
-											{section.tag}
-										</p>
-										<div className="mt-4 h-1 w-12 rounded-full bg-primary" />
-									</div>
+								<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+									<Image
+										src={i === 0 ? "/vision-mission-section1.png" : "/vision-mission-section2.png"}
+										alt={i === 0
+											? "MerkMetryx vision - driving force behind businesses that shape the future"
+											: "MerkMetryx mission - delivering effective digital marketing and research solutions"
+										}
+										width={1920}
+										height={1080}
+										className="w-full h-auto"
+										priority={false}
+									/>
 								</div>
 							</motion.div>
 						);
