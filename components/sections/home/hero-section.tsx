@@ -129,37 +129,18 @@ export function HeroSection() {
 					<div className="pointer-events-none absolute inset-0 rounded-3xl bg-primary/8 blur-2xl" />
 
 					{/* Video Card */}
-					{/* Shadow wrapper */}
 					<div className="relative z-20 w-full rounded-3xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.35)]">
-						{/* Clip wrapper */}
 						<div className="overflow-hidden rounded-3xl border border-border/40">
 							<video
-								autoPlay
-								loop
-								muted
-								playsInline
+								// autoPlay
+								// loop
+								// muted
+								// playsInline
+								controls
 								className="h-auto w-full object-cover"
 							>
 								<source src="/Merkmetryx.mp4" type="video/mp4" />
 							</video>
-						</div>
-					</div>
-
-					{/* Floating Data Card */}
-					<div className="relative z-0 w-full -mt-5 rounded-b-2xl border border-border/30 bg-background px-6 py-4 shadow-xl">
-						<div className="flex items-center justify-between pt-4">
-							<div>
-								<p className="text-sm font-semibold text-foreground">
-									Real-time Intelligence
-								</p>
-								<p className="text-xs text-muted-foreground">
-									Live dashboard · 500+ data sources
-								</p>
-							</div>
-							<span className="flex items-center gap-1.5 text-xs font-semibold text-primary">
-								<span className="inline-block size-2 rounded-full bg-green-500 animate-pulse" />
-								Live
-							</span>
 						</div>
 					</div>
 				</motion.div>

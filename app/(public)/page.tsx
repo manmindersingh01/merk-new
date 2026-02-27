@@ -24,7 +24,7 @@ export default function Home() {
 			<AiFeaturesSection />
 			<SecuritySection />
 			<TestimonialsSection />
-			<PricingSection />
+			{/* <PricingSection /> */}
 			<CtaSection />
 		</div>
 	);
