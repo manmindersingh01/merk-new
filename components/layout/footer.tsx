@@ -178,14 +178,14 @@ export function Footer() {
 					</p>
 
 					{/* Privacy & Terms */}
-					<div className="flex gap-6">
+					{/* <div className="flex gap-6">
 						<span className="cursor-pointer text-xs text-muted-foreground transition-colors hover:text-foreground">
 							Privacy Policy
 						</span>
 						<span className="cursor-pointer text-xs text-muted-foreground transition-colors hover:text-foreground">
 							Terms of Service
 						</span>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</footer>
