@@ -20,7 +20,7 @@ export function HeroSection() {
 				<div className="absolute right-1/4 bottom-1/4 h-100 w-100 rounded-full bg-primary/4 blur-3xl" />
 			</div>
 
-			<div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+			<div className="relative mx-auto grid min-h-[calc(100vh-7rem)] max-w-7xl items-center gap-10 lg:grid-cols-[40%_60%] lg:gap-16">
 				{/* ── Left column: text content ── */}
 				<div className="flex flex-col justify-center">
 					{/* Badge */}
