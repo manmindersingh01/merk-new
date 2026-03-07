@@ -7,34 +7,54 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
 	{
-		question: "What happens if I exceed my plan limits?",
+		question: "What is Merkmetryx?",
 		answer:
-			"We'll notify you before any overage charges. You can upgrade mid-cycle or purchase additional capacity.",
+			"Merkmetryx is a market research platform that helps businesses understand customers through reliable insights and data analysis. We conduct both online and offline research to provide a complete view of the market.",
 	},
 	{
-		question: "Can I change plans at any time?",
+		question: "What services does Merkmetryx provide?",
 		answer:
-			"Yes. Upgrade instantly. Downgrades take effect at your next billing cycle with prorated refunds.",
+			"Merkmetryx offers market surveys, consumer research, brand analysis, and data-driven insights. We help companies make better decisions based on real customer feedback.",
 	},
 	{
-		question: "Do you offer educational or nonprofit discounts?",
+		question: "Does Merkmetryx conduct offline surveys?",
 		answer:
-			"Yes. Contact sales@merkmetryx.com with proof of status for up to 30% off.",
+			"Yes, Merkmetryx conducts offline surveys through trained surveyors who interact directly with respondents. These face-to-face interviews help collect authentic and detailed market insights.",
 	},
 	{
-		question: "What payment methods do you accept?",
+		question: "How are offline interviews conducted?",
 		answer:
-			"Credit card, ACH transfer, and invoicing for annual contracts.",
+			"Our professional surveyors conduct structured interviews with respondents in targeted locations. This method helps capture genuine opinions and accurate field data.",
 	},
 	{
-		question: "Is there a free trial?",
+		question: "Who analyzes the survey results?",
 		answer:
-			"Starter plan includes a free tier. Growth and Professional offer 14-day trials.",
+			"Our experienced research team carefully analyzes the collected data from both online and offline surveys. They transform responses into meaningful insights and actionable reports.",
 	},
 	{
-		question: "What's included in 'dedicated support'?",
+		question: "Why are offline surveys important in market research?",
 		answer:
-			"Professional and Enterprise plans include a dedicated account manager, priority response SLAs, and custom training.",
+			"Offline surveys help reach audiences who may not be active online. They provide deeper and more realistic insights from real-world consumers.",
+	},
+	{
+		question: "What industries can benefit from Merkmetryx research?",
+		answer:
+			"Merkmetryx supports industries such as FMCG, retail, healthcare, technology, and startups. Our research helps businesses understand customer preferences and market trends.",
+	},
+	{
+		question: "How does Merkmetryx ensure data accuracy?",
+		answer:
+			"We use trained surveyors, structured questionnaires, and professional data validation processes. This ensures reliable, unbiased, and high-quality research results.",
+	},
+	{
+		question: "How long does a research project usually take?",
+		answer:
+			"The timeline depends on the research scope and sample size. Most projects are completed within a few days to a few weeks.",
+	},
+	{
+		question: "Why choose Merkmetryx for market research?",
+		answer:
+			"Merkmetryx combines technology, expert researchers, and field surveyors to deliver reliable insights. We help businesses turn real market data into smart strategies.",
 	},
 ];
 

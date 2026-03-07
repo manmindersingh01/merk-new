@@ -134,12 +134,13 @@ export function HeroSection() {
 						<div className="overflow-hidden rounded-3xl border border-border/40 bg-black">
 							<video
 								autoPlay
-								loop
-								muted
-								playsInline
+								// loop
+								// muted
+								// playsInline
+								controls
 								className="aspect-video w-full object-cover"
 							>
-								<source src="/Merkmetryx.mp4" type="video/mp4" />
+								<source src="/Merkmatryx_1.mp4" type="video/mp4" />
 							</video>
 						</div>
 					</div>
