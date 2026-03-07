@@ -29,7 +29,7 @@ export default function RootLayout({
 			</head>
 			<body className="antialiased">
 				<Toaster position="top-right" />
-				<ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+				<ThemeProvider defaultTheme="light" storageKey="theme">
 					{children}
 				</ThemeProvider>
 			</body>
