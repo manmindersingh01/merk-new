@@ -9,7 +9,8 @@ const sections = [
 	{
 		icon: Target,
 		tag: "Our Vision",
-		title: "To be the driving force behind the businesses that shape the future through innovation and empirical evidence.",
+		title:
+			"To be the driving force behind the businesses that shape the future through innovation and empirical evidence.",
 		description:
 			"We envision a world where every strategic decision is backed by rigorous market intelligence. Where launches aren't gambles, but calculated moves validated by real consumer evidence. MerkMetryx exists to make that vision reality — empowering businesses to move faster, with confidence, through evidence-based validation.",
 		reverse: false,
@@ -17,7 +18,8 @@ const sections = [
 	{
 		icon: Compass,
 		tag: "Our Mission",
-		title: "To deliver effective digital marketing and research solutions, provide a high-touch customer experience, and reinvest profits into client success and the broader community.",
+		title:
+			"To deliver effective digital marketing and research solutions, provide a high-touch customer experience, and reinvest profits into client success and the broader community.",
 		description:
 			"Every client engagement is built on three pillars: methodological excellence, strategic partnership, and measurable impact. We deliver research intelligence that doesn't sit in a deck — it drives decisions, shapes roadmaps, and validates capital commitments before they're made.",
 		reverse: true,
@@ -63,10 +65,15 @@ export function VisionMissionSection() {
 								{/* Visual side */}
 								<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
 									<Image
-										src={i === 0 ? "/vision-mission-section1.png" : "/vision-mission-section2.png"}
-										alt={i === 0
-											? "MerkMetryx vision - driving force behind businesses that shape the future"
-											: "MerkMetryx mission - delivering effective digital marketing and research solutions"
+										src={
+											i === 0
+												? "/vision-mission-section1.png"
+												: "/vision-mission-section2.png"
+										}
+										alt={
+											i === 0
+												? "MerkMetryx vision - driving force behind businesses that shape the future"
+												: "MerkMetryx mission - delivering effective digital marketing and research solutions"
 										}
 										width={1920}
 										height={1080}

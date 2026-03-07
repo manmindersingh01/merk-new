@@ -38,7 +38,7 @@ export default async function AdminPage() {
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 	const viewsToday = allPageViews.filter(
-		(v) => new Date(v.created_at) >= today,
+		(v) => new Date(v.created_at) >= today
 	).length;
 
 	return (
@@ -89,9 +89,7 @@ export default async function AdminPage() {
 							<p className="text-2xl font-extrabold text-foreground">
 								{stat.value}
 							</p>
-							<p className="text-xs text-muted-foreground">
-								{stat.label}
-							</p>
+							<p className="text-xs text-muted-foreground">{stat.label}</p>
 						</div>
 					);
 					return stat.href ? (
@@ -106,9 +104,7 @@ export default async function AdminPage() {
 
 			{/* Analytics charts */}
 			<div className="mb-2">
-				<h2 className="text-base font-bold text-foreground">
-					Analytics
-				</h2>
+				<h2 className="text-base font-bold text-foreground">Analytics</h2>
 				<p className="mt-0.5 text-xs text-muted-foreground">
 					Visitors, leads, and content performance overview.
 				</p>
@@ -118,7 +114,6 @@ export default async function AdminPage() {
 				posts={allPosts}
 				pageViews={allPageViews}
 			/>
-
-			</div>
+		</div>
 	);
 }

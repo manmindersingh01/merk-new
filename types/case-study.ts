@@ -14,5 +14,8 @@ export interface CaseStudy {
 	updated_at: string;
 }
 
-export type CaseStudyInsert = Omit<CaseStudy, "id" | "created_at" | "updated_at">;
+export type CaseStudyInsert = Omit<
+	CaseStudy,
+	"id" | "created_at" | "updated_at"
+>;
 export type CaseStudyUpdate = Partial<CaseStudyInsert>;

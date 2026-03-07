@@ -111,14 +111,14 @@ export function HowItWorksSection() {
 								From data chaos to strategic clarity — in under 48 hours.
 							</h3>
 							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Every MerkMetryx engagement follows this rigorous 4-stage pipeline,
-								engineered to eliminate guesswork and deliver boardroom-ready intelligence.
-								Our AI-powered methodology ensures you never make strategic decisions on
-								incomplete or biased data.
+								Every MerkMetryx engagement follows this rigorous 4-stage
+								pipeline, engineered to eliminate guesswork and deliver
+								boardroom-ready intelligence. Our AI-powered methodology ensures
+								you never make strategic decisions on incomplete or biased data.
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								500+ data sources. 97% accuracy. Zero manual intervention. That's the
-								MerkMetryx advantage.
+								500+ data sources. 97% accuracy. Zero manual intervention.
+								That's the MerkMetryx advantage.
 							</p>
 						</div>
 

@@ -115,7 +115,7 @@ async function CaseStudyContent({ slug }: { slug: string }) {
 			<div
 				className={cn(
 					"relative flex min-h-72 items-end bg-linear-to-br pt-28 sm:min-h-105",
-					gradient,
+					gradient
 				)}
 			>
 				{cs.cover_image_url && (

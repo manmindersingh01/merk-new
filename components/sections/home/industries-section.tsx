@@ -74,9 +74,9 @@ export function IndustriesSection() {
 						Deep sector knowledge. Precise market intelligence.
 					</h2>
 					<p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-						We don&apos;t offer generic research. Our methodologies are calibrated
-						to the specific dynamics, regulations, and buyer behaviours of your
-						industry.
+						We don&apos;t offer generic research. Our methodologies are
+						calibrated to the specific dynamics, regulations, and buyer
+						behaviours of your industry.
 					</p>
 				</motion.div>
 
@@ -113,7 +113,9 @@ export function IndustriesSection() {
 											<p className="text-lg font-extrabold text-primary sm:text-xl">
 												{stat.value}
 											</p>
-											<p className="text-xs text-muted-foreground">{stat.label}</p>
+											<p className="text-xs text-muted-foreground">
+												{stat.label}
+											</p>
 										</div>
 									))}
 								</div>

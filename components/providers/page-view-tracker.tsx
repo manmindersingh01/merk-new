@@ -12,8 +12,7 @@ export function PageViewTracker() {
 		if (pathname === lastTracked.current) return;
 		lastTracked.current = pathname;
 
-		const referrer =
-			typeof document !== "undefined" ? document.referrer : null;
+		const referrer = typeof document !== "undefined" ? document.referrer : null;
 		trackPageView(pathname, referrer);
 	}, [pathname]);
 

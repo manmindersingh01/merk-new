@@ -12,7 +12,7 @@ export default async function LeadsPage() {
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 	const todayLeads = allLeads.filter(
-		(l) => new Date(l.created_at) >= today,
+		(l) => new Date(l.created_at) >= today
 	).length;
 
 	return (

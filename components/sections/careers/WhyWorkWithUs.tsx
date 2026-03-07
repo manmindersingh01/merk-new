@@ -39,7 +39,6 @@ export function WhyWorkWithUs() {
 	return (
 		<section className="px-4 py-24 sm:px-6 md:px-10 lg:px-16">
 			<div className="mx-auto max-w-6xl">
-
 				{/* Header */}
 				<div className="text-center mb-16">
 					<h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -47,10 +46,9 @@ export function WhyWorkWithUs() {
 					</h2>
 
 					<p className="mt-4 mx-auto max-w-2xl text-muted-foreground">
-						At MerkMetryx, we combine analytical thinking, market research,
-						and data science to help companies make smarter decisions.  
-						If you enjoy solving complex problems with data, you'll feel at
-						home here.
+						At MerkMetryx, we combine analytical thinking, market research, and
+						data science to help companies make smarter decisions. If you enjoy
+						solving complex problems with data, you'll feel at home here.
 					</p>
 				</div>
 

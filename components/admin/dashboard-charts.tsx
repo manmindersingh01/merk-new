@@ -208,29 +208,12 @@ export function DashboardCharts({
 					<ResponsiveContainer width="100%" height={260}>
 						<AreaChart data={viewsOverTime}>
 							<defs>
-								<linearGradient
-									id="viewGrad"
-									x1="0"
-									y1="0"
-									x2="0"
-									y2="1"
-								>
-									<stop
-										offset="5%"
-										stopColor="#14b8a6"
-										stopOpacity={0.3}
-									/>
-									<stop
-										offset="95%"
-										stopColor="#14b8a6"
-										stopOpacity={0}
-									/>
+								<linearGradient id="viewGrad" x1="0" y1="0" x2="0" y2="1">
+									<stop offset="5%" stopColor="#14b8a6" stopOpacity={0.3} />
+									<stop offset="95%" stopColor="#14b8a6" stopOpacity={0} />
 								</linearGradient>
 							</defs>
-							<CartesianGrid
-								strokeDasharray="3 3"
-								stroke="var(--border)"
-							/>
+							<CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
 							<XAxis
 								dataKey="name"
 								tick={{
@@ -269,11 +252,7 @@ export function DashboardCharts({
 					<EmptyState />
 				) : (
 					<ResponsiveContainer width="100%" height={260}>
-						<BarChart
-							data={topPages}
-							layout="vertical"
-							margin={{ left: 8 }}
-						>
+						<BarChart data={topPages} layout="vertical" margin={{ left: 8 }}>
 							<CartesianGrid
 								strokeDasharray="3 3"
 								stroke="var(--border)"
@@ -321,29 +300,12 @@ export function DashboardCharts({
 					<ResponsiveContainer width="100%" height={260}>
 						<AreaChart data={leadsOverTime}>
 							<defs>
-								<linearGradient
-									id="leadGrad"
-									x1="0"
-									y1="0"
-									x2="0"
-									y2="1"
-								>
-									<stop
-										offset="5%"
-										stopColor="#2f4fd8"
-										stopOpacity={0.3}
-									/>
-									<stop
-										offset="95%"
-										stopColor="#2f4fd8"
-										stopOpacity={0}
-									/>
+								<linearGradient id="leadGrad" x1="0" y1="0" x2="0" y2="1">
+									<stop offset="5%" stopColor="#2f4fd8" stopOpacity={0.3} />
+									<stop offset="95%" stopColor="#2f4fd8" stopOpacity={0} />
 								</linearGradient>
 							</defs>
-							<CartesianGrid
-								strokeDasharray="3 3"
-								stroke="var(--border)"
-							/>
+							<CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
 							<XAxis
 								dataKey="name"
 								tick={{
@@ -381,11 +343,7 @@ export function DashboardCharts({
 					<EmptyState />
 				) : (
 					<ResponsiveContainer width="100%" height={260}>
-						<BarChart
-							data={byCountry}
-							layout="vertical"
-							margin={{ left: 8 }}
-						>
+						<BarChart data={byCountry} layout="vertical" margin={{ left: 8 }}>
 							<CartesianGrid
 								strokeDasharray="3 3"
 								stroke="var(--border)"
@@ -444,10 +402,7 @@ export function DashboardCharts({
 								stroke="none"
 							>
 								{byService.map((_, i) => (
-									<Cell
-										key={i}
-										fill={COLORS[i % COLORS.length]}
-									/>
+									<Cell key={i} fill={COLORS[i % COLORS.length]} />
 								))}
 							</Pie>
 							<Tooltip {...tooltipStyle} />
@@ -484,10 +439,7 @@ export function DashboardCharts({
 				) : (
 					<ResponsiveContainer width="100%" height={260}>
 						<BarChart data={byCategory}>
-							<CartesianGrid
-								strokeDasharray="3 3"
-								stroke="var(--border)"
-							/>
+							<CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
 							<XAxis
 								dataKey="name"
 								tick={{
@@ -514,10 +466,7 @@ export function DashboardCharts({
 								barSize={32}
 							>
 								{byCategory.map((_, i) => (
-									<Cell
-										key={i}
-										fill={COLORS[i % COLORS.length]}
-									/>
+									<Cell key={i} fill={COLORS[i % COLORS.length]} />
 								))}
 							</Bar>
 						</BarChart>

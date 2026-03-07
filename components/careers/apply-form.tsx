@@ -23,7 +23,9 @@ interface ApplyFormProps {
 	appliedFor?: string;
 }
 
-export function ApplyForm({ appliedFor = "General Application" }: ApplyFormProps) {
+export function ApplyForm({
+	appliedFor = "General Application",
+}: ApplyFormProps) {
 	const [loading, setLoading] = useState(false);
 	const [open, setOpen] = useState(false);
 	const formRef = useRef<HTMLFormElement>(null);

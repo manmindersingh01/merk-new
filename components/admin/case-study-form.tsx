@@ -1,17 +1,13 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
-import { createCaseStudy, updateCaseStudy } from "@/app/admin/case-studies/actions";
+import {
+	createCaseStudy,
+	updateCaseStudy,
+} from "@/app/admin/case-studies/actions";
 import { CaseStudy } from "@/types/case-study";
 import { Button } from "@/components/ui/button";
-import {
-	ArrowLeft,
-	Eye,
-	EyeOff,
-	Loader2,
-	Upload,
-	X,
-} from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Loader2, Upload, X } from "lucide-react";
 import Link from "next/link";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { supabase } from "@/lib/supabase";
@@ -45,7 +41,7 @@ export function CaseStudyForm({ caseStudy }: CaseStudyFormProps) {
 
 	// Cover image state
 	const [coverImageUrl, setCoverImageUrl] = useState(
-		caseStudy?.cover_image_url ?? "",
+		caseStudy?.cover_image_url ?? ""
 	);
 	const [urlInput, setUrlInput] = useState(caseStudy?.cover_image_url ?? "");
 	const [uploadingImage, setUploadingImage] = useState(false);
@@ -227,7 +223,8 @@ export function CaseStudyForm({ caseStudy }: CaseStudyFormProps) {
 								/>
 							)}
 							<p className="mt-2 text-[11px] text-muted-foreground">
-								Supports Markdown — **bold**, *italic*, ## headings, - lists, &gt; blockquotes, `code`
+								Supports Markdown — **bold**, *italic*, ## headings, - lists,
+								&gt; blockquotes, `code`
 							</p>
 						</div>
 					</div>

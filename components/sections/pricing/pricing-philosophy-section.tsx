@@ -99,15 +99,16 @@ export function PricingPhilosophySection() {
 								Pay for insights, not bureaucracy. Scale without penalties.
 							</h3>
 							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Traditional research firms lock you into annual contracts, charge per-seat,
-								and surprise you with scope creep fees. MerkMetryx operates differently.
-								You pay only for the research volume you consume — no hidden fees, no
-								surprise charges, no vendor lock-in.
+								Traditional research firms lock you into annual contracts,
+								charge per-seat, and surprise you with scope creep fees.
+								MerkMetryx operates differently. You pay only for the research
+								volume you consume — no hidden fees, no surprise charges, no
+								vendor lock-in.
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Start small with 1,000 responses per month. Scale to enterprise volumes
-								as your needs grow. Upgrade, downgrade, or pause anytime. Our pricing
-								grows with your success — never against it.
+								Start small with 1,000 responses per month. Scale to enterprise
+								volumes as your needs grow. Upgrade, downgrade, or pause
+								anytime. Our pricing grows with your success — never against it.
 							</p>
 						</div>
 

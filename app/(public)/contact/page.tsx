@@ -93,7 +93,8 @@ export default function ContactPage() {
 								</div>
 								<div className="flex items-center gap-3 text-sm text-muted-foreground">
 									<MapPin className="size-4 shrink-0 text-primary" />
-									606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai, Maharashtra 400614, INDIA.
+									606, Vindhya Complex, Sec-11, CBD Belapur, Navi Mumbai,
+									Maharashtra 400614, INDIA.
 								</div>
 								<div className="flex items-center gap-3 text-sm text-muted-foreground">
 									<MapPin className="size-4 shrink-0 text-primary" />

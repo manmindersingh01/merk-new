@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, Mail, Phone, MapPin, Instagram, Youtube, Twitter } from "lucide-react";
+import {
+	ArrowRight,
+	Mail,
+	Phone,
+	MapPin,
+	Instagram,
+	Youtube,
+	Twitter,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const footerLinks = {
@@ -25,9 +33,21 @@ const contactInfo = {
 };
 
 const socialLinks = [
-	{ name: "Instagram", url: "https://www.instagram.com/merkmetryx/", icon: Instagram },
-	{ name: "YouTube", url: "https://www.youtube.com/@Merkmetryx", icon: Youtube },
-	{ name: "X (Formerly Twitter)", url: "https://x.com/merkmetryx", icon: Twitter },
+	{
+		name: "Instagram",
+		url: "https://www.instagram.com/merkmetryx/",
+		icon: Instagram,
+	},
+	{
+		name: "YouTube",
+		url: "https://www.youtube.com/@Merkmetryx",
+		icon: Youtube,
+	},
+	{
+		name: "X (Formerly Twitter)",
+		url: "https://x.com/merkmetryx",
+		icon: Twitter,
+	},
 ];
 
 export function Footer() {

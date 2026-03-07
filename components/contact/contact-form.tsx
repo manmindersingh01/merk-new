@@ -48,12 +48,10 @@ export function ContactForm() {
 		return (
 			<div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-8 py-14 text-center">
 				<CheckCircle2 className="size-12 text-emerald-500" />
-				<h3 className="text-xl font-bold text-foreground">
-					Message received!
-				</h3>
+				<h3 className="text-xl font-bold text-foreground">Message received!</h3>
 				<p className="max-w-xs text-sm text-muted-foreground">
-					Thanks for reaching out. A member of our team will be in touch
-					within one business day.
+					Thanks for reaching out. A member of our team will be in touch within
+					one business day.
 				</p>
 			</div>
 		);
@@ -72,9 +70,7 @@ export function ContactForm() {
 				<div className="flex items-center gap-2.5 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
 					<Tag className="size-4 shrink-0 text-primary" />
 					<div className="text-sm">
-						<span className="font-semibold text-foreground">
-							{plan} Plan
-						</span>
+						<span className="font-semibold text-foreground">{plan} Plan</span>
 						{source && SOURCE_LABELS[source] && (
 							<span className="ml-1.5 text-muted-foreground">
 								via {SOURCE_LABELS[source]}

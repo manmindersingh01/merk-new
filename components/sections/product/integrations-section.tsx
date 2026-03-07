@@ -76,7 +76,11 @@ const exportFormats = [
 	{ icon: FileText, label: "PowerPoint", sublabel: "Executive-ready decks" },
 	{ icon: Database, label: "CSV / Excel", sublabel: "Raw data export" },
 	{ icon: Smartphone, label: "Live Dashboard", sublabel: "Shareable URL" },
-	{ icon: Mail, label: "Automated Reports", sublabel: "Scheduled email delivery" },
+	{
+		icon: Mail,
+		label: "Automated Reports",
+		sublabel: "Scheduled email delivery",
+	},
 ];
 
 export function IntegrationsSection() {

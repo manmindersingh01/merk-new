@@ -7,7 +7,14 @@ import {
 	deleteCaseStudy,
 	toggleCaseStudyPublish,
 } from "@/app/admin/case-studies/actions";
-import { Edit2, Trash2, Eye, EyeOff, ExternalLink, Briefcase } from "lucide-react";
+import {
+	Edit2,
+	Trash2,
+	Eye,
+	EyeOff,
+	ExternalLink,
+	Briefcase,
+} from "lucide-react";
 
 interface CaseStudiesTableProps {
 	caseStudies: CaseStudy[];
@@ -25,8 +32,8 @@ export function CaseStudiesTable({
 			await toggleCaseStudyPublish(cs.id, cs.published);
 			setItems((prev) =>
 				prev.map((p) =>
-					p.id === cs.id ? { ...p, published: !p.published } : p,
-				),
+					p.id === cs.id ? { ...p, published: !p.published } : p
+				)
 			);
 		});
 	}

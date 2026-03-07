@@ -83,13 +83,7 @@ const SHARE_TARGETS: ShareTarget[] = [
 
 /* ─── Share popover ─────────────────────────────────────────── */
 
-function SharePopover({
-	post,
-	onClose,
-}: {
-	post: Post;
-	onClose: () => void;
-}) {
+function SharePopover({ post, onClose }: { post: Post; onClose: () => void }) {
 	const postUrl = getPostUrl(post.slug);
 	const [copied, setCopied] = useState(false);
 
@@ -102,9 +96,7 @@ function SharePopover({
 	return (
 		<div className="absolute right-0 top-full z-50 mt-1 w-56 rounded-xl border border-border/60 bg-card p-3 shadow-lg">
 			<div className="mb-2 flex items-center justify-between">
-				<p className="text-xs font-semibold text-foreground">
-					Share this post
-				</p>
+				<p className="text-xs font-semibold text-foreground">Share this post</p>
 				<button
 					onClick={onClose}
 					className="rounded-md p-0.5 text-muted-foreground hover:text-foreground"
@@ -121,9 +113,7 @@ function SharePopover({
 						rel="noopener noreferrer"
 						className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/40 hover:text-foreground"
 					>
-						<span style={{ color: target.color }}>
-							{target.icon}
-						</span>
+						<span style={{ color: target.color }}>{target.icon}</span>
 						{target.name}
 					</a>
 				))}
@@ -179,10 +169,8 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 			await togglePublish(post.id, post.published);
 			setPosts((prev) =>
 				prev.map((p) =>
-					p.id === post.id
-						? { ...p, published: !p.published }
-						: p,
-				),
+					p.id === post.id ? { ...p, published: !p.published } : p
+				)
 			);
 		});
 	}
@@ -260,8 +248,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 										)}
 									</div>
 									<p className="mt-0.5 text-xs text-muted-foreground">
-										{post.author} · {post.read_time} min
-										read
+										{post.author} · {post.read_time} min read
 									</p>
 								</td>
 
@@ -284,9 +271,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 										<span
 											className={`size-1.5 rounded-full ${post.published ? "bg-emerald-500" : "bg-amber-500"}`}
 										/>
-										{post.published
-											? "Published"
-											: "Draft"}
+										{post.published ? "Published" : "Draft"}
 									</span>
 								</td>
 
@@ -298,9 +283,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 												{fmtDate(post.published_at)}
 											</span>
 										) : (
-											<span className="text-muted-foreground/50">
-												—
-											</span>
+											<span className="text-muted-foreground/50">—</span>
 										)}
 									</div>
 								</td>
@@ -320,11 +303,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 										{/* Share */}
 										<button
 											onClick={() =>
-												setSharePostId(
-													sharePostId === post.id
-														? null
-														: post.id,
-												)
+												setSharePostId(sharePostId === post.id ? null : post.id)
 											}
 											title="Share"
 											className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -335,9 +314,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 										{sharePostId === post.id && (
 											<SharePopover
 												post={post}
-												onClose={() =>
-													setSharePostId(null)
-												}
+												onClose={() => setSharePostId(null)}
 											/>
 										)}
 
@@ -345,11 +322,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 										<button
 											onClick={() => handleToggle(post)}
 											disabled={isPending}
-											title={
-												post.published
-													? "Unpublish"
-													: "Publish"
-											}
+											title={post.published ? "Unpublish" : "Publish"}
 											className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
 										>
 											{post.published ? (
@@ -369,9 +342,7 @@ export function PostsTable({ posts: initialPosts }: PostsTableProps) {
 
 										{/* Delete */}
 										<button
-											onClick={() =>
-												handleDelete(post.id)
-											}
+											onClick={() => handleDelete(post.id)}
 											disabled={isPending}
 											className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
 										>

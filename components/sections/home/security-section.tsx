@@ -77,8 +77,12 @@ export function SecuritySection() {
 						>
 							<ShieldCheck className="size-4 text-primary" />
 							<div>
-								<p className="text-xs font-bold text-foreground">{badge.label}</p>
-								<p className="text-[10px] text-muted-foreground">{badge.sublabel}</p>
+								<p className="text-xs font-bold text-foreground">
+									{badge.label}
+								</p>
+								<p className="text-[10px] text-muted-foreground">
+									{badge.sublabel}
+								</p>
 							</div>
 						</div>
 					))}

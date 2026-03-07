@@ -12,6 +12,7 @@ import {
 	Briefcase,
 } from "lucide-react";
 import { logoutAction } from "@/app/admin/login/actions";
+import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 
 const NAV = [
 	{
@@ -57,13 +58,14 @@ export function AdminNav() {
 	const pathname = usePathname();
 
 	return (
-		<>
+		<div className="flex h-full flex-col">
 			{/* Brand */}
 			<div className="flex h-16 items-center gap-3 border-b border-border/40 px-5">
 				<div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
 					<LayoutDashboard className="size-4 text-primary" />
 				</div>
-				<div className="leading-tight">
+
+				<div className="leading-tight flex-1">
 					<p className="text-sm font-extrabold tracking-tight">
 						<span className="text-primary">Merk</span>
 						<span className="text-foreground">Metryx</span>
@@ -72,6 +74,8 @@ export function AdminNav() {
 						Admin Panel
 					</p>
 				</div>
+
+				<AnimatedThemeToggler className="inline-flex size-9 items-center justify-center rounded-full text-foreground transition-colors hover:bg-accent hover:cursor-pointer" />
 			</div>
 
 			{/* Section label */}
@@ -86,6 +90,7 @@ export function AdminNav() {
 				{NAV.map((item) => {
 					const isActive = active(item, pathname);
 					const Icon = item.icon;
+
 					return (
 						<Link
 							key={item.label}
@@ -98,10 +103,15 @@ export function AdminNav() {
 						>
 							<span className="flex items-center gap-3">
 								<Icon
-									className={`size-4 shrink-0 ${isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}`}
+									className={`size-4 shrink-0 ${
+										isActive
+											? "text-primary"
+											: "text-muted-foreground group-hover:text-foreground"
+									}`}
 								/>
 								{item.label}
 							</span>
+
 							{isActive && (
 								<ChevronRight className="size-3.5 text-primary/60" />
 							)}
@@ -110,7 +120,7 @@ export function AdminNav() {
 				})}
 			</nav>
 
-			{/* Spacer */}
+			{/* Spacer pushes footer to bottom */}
 			<div className="flex-1" />
 
 			{/* Footer */}
@@ -123,6 +133,7 @@ export function AdminNav() {
 					<ExternalLink className="size-3.5" />
 					View public site
 				</Link>
+
 				<form action={logoutAction}>
 					<button
 						type="submit"
@@ -133,6 +144,6 @@ export function AdminNav() {
 					</button>
 				</form>
 			</div>
-		</>
+		</div>
 	);
 }

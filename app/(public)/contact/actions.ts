@@ -3,7 +3,9 @@
 import { supabaseAdmin as supabase } from "@/lib/supabase-admin";
 import { headers } from "next/headers";
 
-export type ContactResult = { success: true } | { success: false; error: string };
+export type ContactResult =
+	| { success: true }
+	| { success: false; error: string };
 
 async function getLocationFromIp(ip: string): Promise<string | null> {
 	if (!ip || ip === "127.0.0.1" || ip === "::1" || ip === "unknown") {
@@ -24,7 +26,9 @@ async function getLocationFromIp(ip: string): Promise<string | null> {
 	}
 }
 
-export async function submitContact(formData: FormData): Promise<ContactResult> {
+export async function submitContact(
+	formData: FormData
+): Promise<ContactResult> {
 	const name = (formData.get("name") as string).trim();
 	const company = ((formData.get("company") as string) || "").trim();
 	const email = (formData.get("email") as string).trim();
@@ -43,9 +47,7 @@ export async function submitContact(formData: FormData): Promise<ContactResult> 
 	const headersList = await headers();
 	const forwardedFor = headersList.get("x-forwarded-for");
 	const ip =
-		forwardedFor?.split(",")[0]?.trim() ||
-		headersList.get("x-real-ip") ||
-		"";
+		forwardedFor?.split(",")[0]?.trim() || headersList.get("x-real-ip") || "";
 
 	// Always resolve IP-based location (used for auto-fill or verification)
 	const ipLocation = await getLocationFromIp(ip);

@@ -31,8 +31,9 @@ export function SolutionsCtaSection() {
 							</h2>
 							<p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/75 sm:text-base">
 								Schedule a personalized demo to explore solutions tailored for
-								your industry and role. Discover how our platform can deliver the
-								insights you need to make strategic decisions with confidence.
+								your industry and role. Discover how our platform can deliver
+								the insights you need to make strategic decisions with
+								confidence.
 							</p>
 						</div>
 

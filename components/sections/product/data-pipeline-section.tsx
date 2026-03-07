@@ -2,7 +2,13 @@
 
 import { motion } from "motion/react";
 import { Separator } from "@/components/ui/separator";
-import { Database, Cpu, BrainCircuit, BarChart3, ArrowRight } from "lucide-react";
+import {
+	Database,
+	Cpu,
+	BrainCircuit,
+	BarChart3,
+	ArrowRight,
+} from "lucide-react";
 import Image from "next/image";
 
 const steps = [
@@ -173,13 +179,19 @@ export function DataPipelineSection() {
 								Built for scale. Engineered for accuracy. Optimized for speed.
 							</h3>
 							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Our proprietary data pipeline processes 500+ simultaneous sources,
-								automatically cleanses and validates every record, and applies advanced
-								NLP and ML models — all before delivering presentation-ready insights
-								within 48 hours.
+								Our proprietary data pipeline processes 500+ simultaneous
+								sources, automatically cleanses and validates every record, and
+								applies advanced NLP and ML models — all before delivering
+								presentation-ready insights within 48 hours.
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								<strong className="text-foreground">97% data accuracy.</strong> <strong className="text-foreground">99.8% bot rejection.</strong> <strong className="text-foreground">94% ML precision.</strong> These aren't promises — they're performance benchmarks validated across 500+ enterprise engagements.
+								<strong className="text-foreground">97% data accuracy.</strong>{" "}
+								<strong className="text-foreground">
+									99.8% bot rejection.
+								</strong>{" "}
+								<strong className="text-foreground">94% ML precision.</strong>{" "}
+								These aren't promises — they're performance benchmarks validated
+								across 500+ enterprise engagements.
 							</p>
 						</div>
 

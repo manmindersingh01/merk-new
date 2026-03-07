@@ -123,8 +123,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 								Research &amp; Insights
 							</div>
 							<h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-								MerkMetryx{" "}
-								<span className="text-primary">Insights</span>
+								MerkMetryx <span className="text-primary">Insights</span>
 							</h1>
 							<p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
 								Perspectives on market research, AI-powered intelligence, and

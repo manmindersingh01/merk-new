@@ -128,8 +128,7 @@ export default async function CaseStudiesPage({
 								Real-World Impact
 							</div>
 							<h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-								Case{" "}
-								<span className="text-primary">Studies</span>
+								Case <span className="text-primary">Studies</span>
 							</h1>
 							<p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
 								See how leading brands use MerkMetryx to turn research into

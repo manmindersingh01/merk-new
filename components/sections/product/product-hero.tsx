@@ -56,8 +56,8 @@ export function ProductHero() {
 					className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
 				>
 					MerkMetryx combines a 250M+ consumer panel, enterprise-grade AI, and
-					end-to-end research support into one platform — from self-serve surveys
-					to full-service market intelligence programmes.
+					end-to-end research support into one platform — from self-serve
+					surveys to full-service market intelligence programmes.
 				</motion.p>
 
 				{/* CTAs */}

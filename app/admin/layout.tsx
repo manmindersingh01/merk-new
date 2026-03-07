@@ -17,14 +17,14 @@ export default async function AdminLayout({
 	}
 
 	return (
-		<div className="flex min-h-screen bg-background">
-			{/* Sidebar — client component handles active state */}
-			<aside className="hidden w-64 shrink-0 flex-col border-r border-border/50 bg-card md:flex">
+		<div className="min-h-screen bg-background">
+			{/* Sidebar */}
+			<aside className="fixed inset-y-0 left-0 hidden w-64 border-r border-border/50 bg-card md:flex md:flex-col">
 				<AdminNav />
 			</aside>
 
 			{/* Main */}
-			<div className="flex min-w-0 flex-1 flex-col">
+			<div className="flex min-h-screen flex-col md:ml-64">
 				{/* Mobile topbar */}
 				<header className="flex h-14 shrink-0 items-center justify-between border-b border-border/40 bg-card px-4 md:hidden">
 					<span className="text-sm font-extrabold">
@@ -32,6 +32,7 @@ export default async function AdminLayout({
 						<span className="text-foreground">Metryx</span>{" "}
 						<span className="font-normal text-muted-foreground">Admin</span>
 					</span>
+
 					<div className="flex items-center gap-3">
 						<Link
 							href="/"
@@ -39,6 +40,7 @@ export default async function AdminLayout({
 						>
 							← Site
 						</Link>
+
 						<form action={logoutAction}>
 							<button
 								type="submit"

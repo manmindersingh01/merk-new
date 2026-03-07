@@ -16,7 +16,8 @@ const stats = [
 	{
 		value: "48 hrs",
 		label: "Avg. Turnaround",
-		description: "From brief to actionable insights — without compromising rigor",
+		description:
+			"From brief to actionable insights — without compromising rigor",
 	},
 	{
 		value: "97%",

@@ -100,7 +100,7 @@ export async function deleteCaseStudy(id: string) {
 
 export async function toggleCaseStudyPublish(
 	id: string,
-	currentState: boolean,
+	currentState: boolean
 ) {
 	await requireAdmin();
 

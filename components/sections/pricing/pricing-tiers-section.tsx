@@ -26,8 +26,8 @@ export function PricingTiersSection() {
 						Research at the scale you need.
 					</h2>
 					<p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-						From solo founders to scaling enterprises. Every plan includes access
-						to our AI-powered platform and global consumer panel.
+						From solo founders to scaling enterprises. Every plan includes
+						access to our AI-powered platform and global consumer panel.
 					</p>
 				</motion.div>
 
@@ -58,7 +58,9 @@ export function PricingTiersSection() {
 								<p
 									className={cn(
 										"text-xs font-semibold uppercase tracking-widest",
-										tier.featured ? "text-primary-foreground/70" : "text-primary"
+										tier.featured
+											? "text-primary-foreground/70"
+											: "text-primary"
 									)}
 								>
 									{tier.tagline}
@@ -66,7 +68,9 @@ export function PricingTiersSection() {
 								<h3
 									className={cn(
 										"mt-1 text-xl font-extrabold sm:text-2xl",
-										tier.featured ? "text-primary-foreground" : "text-foreground"
+										tier.featured
+											? "text-primary-foreground"
+											: "text-foreground"
 									)}
 								>
 									{tier.name}
@@ -117,7 +121,9 @@ export function PricingTiersSection() {
 										<Check
 											className={cn(
 												"mt-0.5 size-4 shrink-0",
-												tier.featured ? "text-primary-foreground" : "text-primary"
+												tier.featured
+													? "text-primary-foreground"
+													: "text-primary"
 											)}
 										/>
 										<span

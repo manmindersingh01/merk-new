@@ -52,8 +52,8 @@ export function RoleSolutionsSection() {
 					</h2>
 					<p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
 						MerkMetryx addresses the specific KPIs and pain points of different
-						organizational functions, ensuring research data is actionable across
-						the enterprise.
+						organizational functions, ensuring research data is actionable
+						across the enterprise.
 					</p>
 				</motion.div>
 

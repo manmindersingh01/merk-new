@@ -26,21 +26,17 @@ export function CaseStudyCard({
 	featured = false,
 }: CaseStudyCardProps) {
 	const gradient =
-		industryGradients[caseStudy.industry ?? ""] ??
-		"from-primary to-primary/60";
+		industryGradients[caseStudy.industry ?? ""] ?? "from-primary to-primary/60";
 
 	if (featured) {
 		return (
-			<Link
-				href={`/case-studies/${caseStudy.slug}`}
-				className="group block"
-			>
+			<Link href={`/case-studies/${caseStudy.slug}`} className="group block">
 				<div className="grid overflow-hidden rounded-2xl border border-border/40 bg-card sm:rounded-3xl lg:grid-cols-2">
 					{/* Cover */}
 					<div
 						className={cn(
 							"relative flex min-h-56 items-end bg-gradient-to-br p-8 lg:min-h-80",
-							gradient,
+							gradient
 						)}
 					>
 						{caseStudy.cover_image_url && (
@@ -113,7 +109,7 @@ export function CaseStudyCard({
 				<div
 					className={cn(
 						"relative flex h-44 items-end bg-gradient-to-br p-5",
-						gradient,
+						gradient
 					)}
 				>
 					{caseStudy.cover_image_url && (

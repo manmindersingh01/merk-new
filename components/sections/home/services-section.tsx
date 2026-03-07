@@ -69,7 +69,8 @@ export function ServicesSection() {
 					</h2>
 					<p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
 						A full-spectrum research toolkit — from brand tracking to
-						go-to-market validation — built for the speed modern business demands.
+						go-to-market validation — built for the speed modern business
+						demands.
 					</p>
 				</motion.div>
 

@@ -20,8 +20,7 @@ const useCases = [
 	{
 		icon: Users,
 		title: "Consumer Insights",
-		description:
-			`Leverage buyer personas—such as "Ellen the Engineer"—to understand the specific pain points and emotional drivers of target segments.`,
+		description: `Leverage buyer personas—such as "Ellen the Engineer"—to understand the specific pain points and emotional drivers of target segments.`,
 	},
 	{
 		icon: TestTube,
@@ -115,17 +114,20 @@ export function UseCasesSection() {
 								Proven Applications
 							</p>
 							<h3 className="mt-2 text-xl font-extrabold leading-snug text-foreground sm:text-2xl md:text-3xl">
-								From concept validation to competitive intelligence — backed by evidence.
+								From concept validation to competitive intelligence — backed by
+								evidence.
 							</h3>
 							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Whether you're sizing a market opportunity, testing pricing sensitivity,
-								or benchmarking against competitors, MerkMetryx delivers the strategic
-								intelligence you need before committing capital or resources.
+								Whether you're sizing a market opportunity, testing pricing
+								sensitivity, or benchmarking against competitors, MerkMetryx
+								delivers the strategic intelligence you need before committing
+								capital or resources.
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Our platform supports everything from rapid concept tests to comprehensive
-								TAM/SAM/SOM analyses — giving product teams, strategists, and executives
-								the confidence to launch with precision.
+								Our platform supports everything from rapid concept tests to
+								comprehensive TAM/SAM/SOM analyses — giving product teams,
+								strategists, and executives the confidence to launch with
+								precision.
 							</p>
 						</div>
 					</div>

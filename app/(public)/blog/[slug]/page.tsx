@@ -110,7 +110,7 @@ async function PostContent({ slug }: { slug: string }) {
 			<div
 				className={cn(
 					"relative flex min-h-72 items-end bg-gradient-to-br pt-28 sm:min-h-96",
-					gradient,
+					gradient
 				)}
 			>
 				{typedPost.cover_image_url && (
@@ -180,9 +180,7 @@ async function PostContent({ slug }: { slug: string }) {
 							{typedPost.excerpt}
 						</p>
 					)}
-					{typedPost.content && (
-						<MarkdownContent content={typedPost.content} />
-					)}
+					{typedPost.content && <MarkdownContent content={typedPost.content} />}
 					{typedPost.tags && typedPost.tags.length > 0 && (
 						<div className="mt-12 flex flex-wrap items-center gap-2 border-t border-border/40 pt-8">
 							<Tag className="size-4 text-muted-foreground" />

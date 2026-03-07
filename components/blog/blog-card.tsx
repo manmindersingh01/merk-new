@@ -26,8 +26,7 @@ interface BlogCardProps {
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
 	const catColor =
-		categoryColors[post.category ?? ""] ??
-		"bg-primary/10 text-primary";
+		categoryColors[post.category ?? ""] ?? "bg-primary/10 text-primary";
 	const gradient =
 		categoryGradients[post.category ?? ""] ?? "from-primary to-primary/60";
 

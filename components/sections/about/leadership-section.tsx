@@ -46,7 +46,8 @@ export function LeadershipSection() {
 						Leadership & Team Experts
 					</p>
 					<h2 className="mt-2 max-w-2xl text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl">
-						A carefully selected network of senior consultants and AI researchers.
+						A carefully selected network of senior consultants and AI
+						researchers.
 					</h2>
 					<p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
 						While the platform leverages automation, its foundations are built

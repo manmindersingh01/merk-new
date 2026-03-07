@@ -118,7 +118,9 @@ export function PlatformTiersSection() {
 										<h3 className="text-base font-extrabold text-foreground sm:text-lg">
 											{tier.name}
 										</h3>
-										<p className="text-xs text-muted-foreground">{tier.tagline}</p>
+										<p className="text-xs text-muted-foreground">
+											{tier.tagline}
+										</p>
 									</div>
 								</div>
 
@@ -132,7 +134,9 @@ export function PlatformTiersSection() {
 									<p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
 										Best for
 									</p>
-									<p className="mt-0.5 text-xs text-foreground">{tier.forWho}</p>
+									<p className="mt-0.5 text-xs text-foreground">
+										{tier.forWho}
+									</p>
 								</div>
 
 								{/* Highlights */}

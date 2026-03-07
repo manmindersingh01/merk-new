@@ -93,18 +93,18 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 					</thead>
 					<tbody className="divide-y divide-border/40">
 						{leads.map((lead) => {
-							const date = new Date(
-								lead.created_at,
-							).toLocaleDateString("en-GB", {
-								day: "numeric",
-								month: "short",
-								year: "numeric",
-							});
+							const date = new Date(lead.created_at).toLocaleDateString(
+								"en-GB",
+								{
+									day: "numeric",
+									month: "short",
+									year: "numeric",
+								}
+							);
 							const isExpanded = expandedId === lead.id;
 							const hasExpandable =
 								lead.message ||
-								(lead.location_source === "user" &&
-									lead.ip_location);
+								(lead.location_source === "user" && lead.ip_location);
 
 							return (
 								<>
@@ -142,14 +142,12 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 													{lead.location}
 													<span
 														className={`ml-1 shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium ${
-															lead.location_source ===
-															"user"
+															lead.location_source === "user"
 																? "bg-blue-500/10 text-blue-600"
 																: "bg-amber-500/10 text-amber-600"
 														}`}
 													>
-														{lead.location_source ===
-														"user"
+														{lead.location_source === "user"
 															? "self-reported"
 															: "auto-detected"}
 													</span>
@@ -165,20 +163,11 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 														<Tag className="size-3" />
 														{lead.plan}
 													</span>
-													{lead.source &&
-														SOURCE_LABELS[
-															lead.source
-														] && (
-															<p className="mt-1 text-[10px] text-muted-foreground">
-																via{" "}
-																{
-																	SOURCE_LABELS[
-																		lead
-																			.source
-																	]
-																}
-															</p>
-														)}
+													{lead.source && SOURCE_LABELS[lead.source] && (
+														<p className="mt-1 text-[10px] text-muted-foreground">
+															via {SOURCE_LABELS[lead.source]}
+														</p>
+													)}
 												</div>
 											) : (
 												<span className="text-xs text-muted-foreground">
@@ -194,9 +183,7 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 													{lead.service}
 												</span>
 											) : (
-												<span className="text-xs text-muted-foreground">
-													—
-												</span>
+												<span className="text-xs text-muted-foreground">—</span>
 											)}
 										</td>
 
@@ -207,9 +194,7 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 													{lead.message}
 												</p>
 											) : (
-												<span className="text-xs text-muted-foreground">
-													—
-												</span>
+												<span className="text-xs text-muted-foreground">—</span>
 											)}
 										</td>
 
@@ -224,11 +209,7 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 												{hasExpandable && (
 													<button
 														onClick={() =>
-															setExpandedId(
-																isExpanded
-																	? null
-																	: lead.id,
-															)
+															setExpandedId(isExpanded ? null : lead.id)
 														}
 														title="View details"
 														className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -241,9 +222,7 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 													</button>
 												)}
 												<button
-													onClick={() =>
-														handleDelete(lead.id)
-													}
+													onClick={() => handleDelete(lead.id)}
 													disabled={isPending}
 													className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
 												>
@@ -255,14 +234,8 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 
 									{/* Expanded detail row */}
 									{isExpanded && (
-										<tr
-											key={`${lead.id}-expanded`}
-											className="bg-muted/10"
-										>
-											<td
-												colSpan={6}
-												className="px-5 pb-4 pt-0"
-											>
+										<tr key={`${lead.id}-expanded`} className="bg-muted/10">
+											<td colSpan={6} className="px-5 pb-4 pt-0">
 												<div className="flex flex-col gap-3">
 													{lead.message && (
 														<div className="rounded-xl border border-border/40 bg-background p-4">
@@ -276,22 +249,16 @@ export function LeadsTable({ leads: initialLeads }: LeadsTableProps) {
 													)}
 
 													{/* IP verification — only shown when user self-reported a location */}
-													{lead.location_source ===
-														"user" &&
+													{lead.location_source === "user" &&
 														lead.ip_location && (
 															<div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
 																<p className="mb-1 text-xs font-semibold uppercase tracking-wider text-amber-600">
-																	IP-detected
-																	location
-																	(verification)
+																	IP-detected location (verification)
 																</p>
 																<div className="flex items-center gap-2 text-sm text-foreground">
 																	<MapPin className="size-3.5 text-amber-600" />
-																	{
-																		lead.ip_location
-																	}
-																	{lead.ip_location ===
-																	lead.location ? (
+																	{lead.ip_location}
+																	{lead.ip_location === lead.location ? (
 																		<span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-600">
 																			matches
 																		</span>

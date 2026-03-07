@@ -114,7 +114,9 @@ export function PricingSection() {
 								<p
 									className={cn(
 										"text-xs font-semibold uppercase tracking-widest",
-										plan.featured ? "text-primary-foreground/70" : "text-primary"
+										plan.featured
+											? "text-primary-foreground/70"
+											: "text-primary"
 									)}
 								>
 									{plan.tagline}
@@ -122,7 +124,9 @@ export function PricingSection() {
 								<h3
 									className={cn(
 										"mt-1 text-xl font-extrabold sm:text-2xl",
-										plan.featured ? "text-primary-foreground" : "text-foreground"
+										plan.featured
+											? "text-primary-foreground"
+											: "text-foreground"
 									)}
 								>
 									{plan.name}
@@ -156,7 +160,9 @@ export function PricingSection() {
 										<Check
 											className={cn(
 												"mt-0.5 size-4 shrink-0",
-												plan.featured ? "text-primary-foreground" : "text-primary"
+												plan.featured
+													? "text-primary-foreground"
+													: "text-primary"
 											)}
 										/>
 										<span

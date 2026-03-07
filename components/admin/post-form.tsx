@@ -4,14 +4,7 @@ import { useState, useTransition, useRef } from "react";
 import { createPost, updatePost } from "@/app/admin/actions";
 import { Post } from "@/types/blog";
 import { Button } from "@/components/ui/button";
-import {
-	ArrowLeft,
-	Eye,
-	EyeOff,
-	Loader2,
-	Upload,
-	X,
-} from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Loader2, Upload, X } from "lucide-react";
 import Link from "next/link";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { supabase } from "@/lib/supabase";
@@ -40,7 +33,7 @@ export function PostForm({ post }: PostFormProps) {
 
 	// Cover image state — tracks the final URL (uploaded or manual)
 	const [coverImageUrl, setCoverImageUrl] = useState(
-		post?.cover_image_url ?? "",
+		post?.cover_image_url ?? ""
 	);
 	const [urlInput, setUrlInput] = useState(post?.cover_image_url ?? "");
 	const [uploadingImage, setUploadingImage] = useState(false);
@@ -50,9 +43,7 @@ export function PostForm({ post }: PostFormProps) {
 
 	async function handleImageUpload(file: File) {
 		if (!file.type.startsWith("image/")) {
-			setUploadError(
-				"Please select a valid image file (PNG, JPG, WebP, GIF).",
-			);
+			setUploadError("Please select a valid image file (PNG, JPG, WebP, GIF).");
 			return;
 		}
 		if (file.size > 5 * 1024 * 1024) {
@@ -130,7 +121,10 @@ export function PostForm({ post }: PostFormProps) {
 		<div>
 			{/* Header */}
 			<div className="mb-8 flex items-center gap-4">
-				<Link href="/admin" className="text-muted-foreground hover:text-foreground">
+				<Link
+					href="/admin"
+					className="text-muted-foreground hover:text-foreground"
+				>
 					<ArrowLeft className="size-5" />
 				</Link>
 				<div>
@@ -224,7 +218,8 @@ export function PostForm({ post }: PostFormProps) {
 								/>
 							)}
 							<p className="mt-2 text-[11px] text-muted-foreground">
-								Supports Markdown — **bold**, *italic*, ## headings, - lists, &gt; blockquotes, `code`
+								Supports Markdown — **bold**, *italic*, ## headings, - lists,
+								&gt; blockquotes, `code`
 							</p>
 						</div>
 					</div>
