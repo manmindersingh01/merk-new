@@ -8,7 +8,7 @@ import { IndustriesSection } from "@/components/sections/home/industries-section
 import { AiFeaturesSection } from "@/components/sections/home/ai-features-section";
 import { SecuritySection } from "@/components/sections/home/security-section";
 import { TestimonialsSection } from "@/components/sections/home/testimonials-section";
-import { PricingSection } from "@/components/sections/home/pricing-section";
+// import { PricingSection } from "@/components/sections/home/pricing-section";
 import { CtaSection } from "@/components/sections/home/cta-section";
 
 export default function Home() {
