@@ -59,7 +59,7 @@ export function CtaSection() {
 									<ArrowRight className="ml-1 size-4" />
 								</Button>
 							</Link>
-							<Link href="/resources">
+							{/* <Link href="/resources">
 								<Button
 									size="lg"
 									className="w-full rounded-xl border border-primary-foreground/20 bg-transparent font-medium text-primary-foreground hover:bg-primary-foreground/10"
@@ -67,7 +67,7 @@ export function CtaSection() {
 									<FileText className="mr-1 size-4" />
 									Download Research Guide
 								</Button>
-							</Link>
+							</Link> */}
 							<p className="text-center text-xs text-primary-foreground/50">
 								Trusted by 500+ strategy teams across 50 countries.
 							</p>

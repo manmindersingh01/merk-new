@@ -71,7 +71,7 @@ export function ProductCtaSection() {
 									<ArrowRight className="ml-1 size-4" />
 								</Button>
 							</Link>
-							<Link href="/resources">
+							{/* <Link href="/resources">
 								<Button
 									size="lg"
 									className="w-full rounded-xl border border-primary-foreground/20 bg-transparent font-medium text-primary-foreground hover:bg-primary-foreground/10"
@@ -79,7 +79,7 @@ export function ProductCtaSection() {
 									<BookOpen className="mr-1 size-4" />
 									Read the Product Guide
 								</Button>
-							</Link>
+							</Link> */}
 							<p className="text-center text-xs text-primary-foreground/45">
 								No credit card required · Cancel anytime · GDPR compliant
 							</p>
