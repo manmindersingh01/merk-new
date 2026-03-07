@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals2.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-
+import { Toaster } from "sonner";
 export const metadata: Metadata = {
 	title: "MerkMetryx - Market Research & Validation",
 	description:
@@ -28,6 +28,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className="antialiased">
+				<Toaster position="top-right" />
 				<ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
 					{children}
 				</ThemeProvider>

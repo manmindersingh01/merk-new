@@ -1,12 +1,12 @@
 "use client";
 
+import { ApplyForm } from "@/components/careers/apply-form";
 import { motion } from "motion/react";
 
 export function OpenPositions() {
 	return (
 		<section className="px-4 py-20 sm:px-6 md:px-10 lg:px-16">
 			<div className="mx-auto max-w-5xl">
-
 				{/* Section header */}
 				<div className="mb-16 text-center">
 					<h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -28,7 +28,6 @@ export function OpenPositions() {
 				>
 					{/* Job Header */}
 					<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
 						<div>
 							<h3 className="text-2xl font-semibold text-foreground">
 								Senior Data Analyst
@@ -61,11 +60,10 @@ export function OpenPositions() {
 						</h4>
 
 						<p className="text-muted-foreground leading-relaxed">
-							MerkMetryx is seeking a highly skilled and experienced Senior
-							Data Analyst to join our growing analytics team. The ideal
-							candidate will have strong expertise in data analysis,
-							statistical modeling, data visualization, and business
-							intelligence.
+							MerkMetryx is seeking a highly skilled and experienced Senior Data
+							Analyst to join our growing analytics team. The ideal candidate
+							will have strong expertise in data analysis, statistical modeling,
+							data visualization, and business intelligence.
 						</p>
 
 						<p className="text-muted-foreground leading-relaxed">
@@ -185,7 +183,6 @@ export function OpenPositions() {
 
 					{/* Apply section */}
 					<div className="mt-12 rounded-xl bg-muted/40 p-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-
 						<div>
 							<h5 className="font-semibold text-foreground">
 								Interested in this role?
@@ -195,14 +192,11 @@ export function OpenPositions() {
 								Send your resume and portfolio to apply for this position.
 							</p>
 						</div>
-
 						{/* TODO:
 						Replace this with resume upload + form submission.
 						Include resume file + applicant details.
 						*/}
-						<button className="rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
-							Apply for this Role
-						</button>
+						<ApplyForm appliedFor="Senior Data Analyst" />
 					</div>
 				</motion.div>
 			</div>

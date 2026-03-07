@@ -130,14 +130,14 @@ export function HeroSection() {
 
 					{/* Video Card */}
 					<div className="relative z-20 w-full rounded-3xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.35)]">
-						<div className="overflow-hidden rounded-3xl border border-border/40">
+						{/* Clip wrapper */}
+						<div className="overflow-hidden rounded-3xl border border-border/40 bg-black">
 							<video
-								// autoPlay
-								// loop
-								// muted
-								// playsInline
-								controls
-								className="h-auto w-full object-cover"
+								autoPlay
+								loop
+								muted
+								playsInline
+								className="aspect-video w-full object-cover"
 							>
 								<source src="/Merkmetryx.mp4" type="video/mp4" />
 							</video>

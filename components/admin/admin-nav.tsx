@@ -38,6 +38,12 @@ const NAV = [
 		icon: Users,
 		matchPrefix: "/admin/leads",
 	},
+	{
+		label: "Applicants",
+		href: "/admin/applicants",
+		icon: Users,
+		matchPrefix: "/admin/applicants",
+	},
 ];
 
 function active(item: (typeof NAV)[0], pathname: string) {
@@ -96,7 +102,9 @@ export function AdminNav() {
 								/>
 								{item.label}
 							</span>
-							{isActive && <ChevronRight className="size-3.5 text-primary/60" />}
+							{isActive && (
+								<ChevronRight className="size-3.5 text-primary/60" />
+							)}
 						</Link>
 					);
 				})}
