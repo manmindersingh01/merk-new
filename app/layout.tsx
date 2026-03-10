@@ -3,9 +3,9 @@ import "./globals2.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "sonner";
 export const metadata: Metadata = {
-	title: "MerkMetryx - Market Research & Validation",
+	title: "MerkMetryx: AI-Powered Market Research & Product Validation Platform",
 	description:
-		"Full-spectrum market research and product validation firm helping businesses assess demand, feasibility, and market viability.",
+		"MerkMetryx helps brands to make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence. Validate products, optimize marketing, and grow faster with data-driven insights.",
 };
 
 export default function RootLayout({
