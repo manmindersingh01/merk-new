@@ -118,7 +118,7 @@ export function UseCasesSection() {
 								evidence.
 							</h3>
 							<p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-								Whether you're sizing a market opportunity, testing pricing
+								Whether you&apos;re sizing a market opportunity, testing pricing
 								sensitivity, or benchmarking against competitors, MerkMetryx
 								delivers the strategic intelligence you need before committing
 								capital or resources.

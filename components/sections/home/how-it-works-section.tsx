@@ -118,7 +118,7 @@ export function HowItWorksSection() {
 							</p>
 							<p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
 								500+ data sources. 97% accuracy. Zero manual intervention.
-								That's the MerkMetryx advantage.
+								That&apos;s the MerkMetryx advantage.
 							</p>
 						</div>
 

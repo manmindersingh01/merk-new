@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CalendarDays, BookOpen } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 
 const proofPoints = [
 	"No-obligation 30-minute demo",

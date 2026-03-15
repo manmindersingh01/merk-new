@@ -48,7 +48,7 @@ export function WhyWorkWithUs() {
 					<p className="mt-4 mx-auto max-w-2xl text-muted-foreground">
 						At MerkMetryx, we combine analytical thinking, market research, and
 						data science to help companies make smarter decisions. If you enjoy
-						solving complex problems with data, you'll feel at home here.
+						solving complex problems with data, you&apos;ll feel at home here.
 					</p>
 				</div>
 

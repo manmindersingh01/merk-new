@@ -30,7 +30,7 @@ export function PricingCtaSection() {
 								Find the right plan for your research needs.
 							</h2>
 							<p className="mt-4 text-sm leading-relaxed text-primary-foreground/75 sm:text-base">
-								Not sure which tier fits? Book a consultation and we'll design a
+								Not sure which tier fits? Book a consultation and we&apos;ll design a
 								custom package that aligns with your research volume, team size,
 								and strategic goals.
 							</p>

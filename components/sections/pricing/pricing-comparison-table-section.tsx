@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { Check, X } from "lucide-react";
 import { comparisonFeatures } from "@/lib/pricing-data";
-import { cn } from "@/lib/utils";
 
 export function PricingComparisonTableSection() {
 	return (

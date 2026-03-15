@@ -31,7 +31,7 @@ export function AboutCtaSection() {
 								evidence.
 							</h2>
 							<p className="mt-4 text-sm leading-relaxed text-primary-foreground/75 sm:text-base">
-								Whether you're validating a new product, entering a market, or
+								Whether you&apos;re validating a new product, entering a market, or
 								tracking brand health — MerkMetryx delivers the intelligence you
 								need before you commit resources.
 							</p>

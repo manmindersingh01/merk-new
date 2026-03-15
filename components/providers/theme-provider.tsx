@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 
 type Theme = "dark" | "light" | "system";
 
@@ -28,19 +34,18 @@ export function ThemeProvider({
 	storageKey = "vite-ui-theme",
 	...props
 }: ThemeProviderProps) {
-	const [theme, setTheme] = useState<Theme>(defaultTheme);
-	const [mounted, setMounted] = useState(false);
-
-	// Read from localStorage after component mounts (client-side only)
-	useEffect(() => {
-		const storedTheme = localStorage.getItem(storageKey) as Theme;
-		if (storedTheme) {
-			setTheme(storedTheme);
+	const [theme, setTheme] = useState<Theme>(() => {
+		if (typeof window !== "undefined") {
+			const stored = localStorage.getItem(storageKey) as Theme;
+			if (stored) return stored;
 		}
-		setMounted(true);
-	}, [storageKey]);
+		return defaultTheme;
+	});
+	const mountedRef = useRef(false);
 
 	useEffect(() => {
+		mountedRef.current = true;
+
 		const root = window.document.documentElement;
 
 		root.classList.remove("light", "dark");
@@ -67,7 +72,7 @@ export function ThemeProvider({
 	};
 
 	// Prevent flash of unstyled content by not rendering until mounted
-	if (!mounted) {
+	if (typeof window === "undefined") {
 		return null;
 	}
 

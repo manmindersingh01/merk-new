@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Calendar, Clock } from "lucide-react";
 import { Post } from "@/types/blog";
 import { cn } from "@/lib/utils";
 

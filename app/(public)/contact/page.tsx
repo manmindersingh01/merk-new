@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/contact/contact-form";
-import { Mail, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 
 const NEXT_STEPS = [
 	{
@@ -18,13 +18,6 @@ const NEXT_STEPS = [
 		title: "Kickoff",
 		desc: "Once approved, your project starts — typically within 48 hours.",
 	},
-];
-
-const TRUST_POINTS = [
-	"250M+ global panel",
-	"SOC 2 Type II certified",
-	"Results in as little as 48 hrs",
-	"500+ projects delivered",
 ];
 
 export default function ContactPage() {

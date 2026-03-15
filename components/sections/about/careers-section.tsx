@@ -29,12 +29,12 @@ export function CareersSection() {
 							them.
 						</h2>
 						<p className="mt-4 text-sm leading-relaxed text-primary-foreground/85 sm:text-base">
-							The careers philosophy reflects the platform's automation-driven
+							The careers philosophy reflects the platform&apos;s automation-driven
 							mission: minimizing repetitive human labor so teams can focus more
 							on meaningful work, creativity, and real-world impact.
 						</p>
 						<p className="mt-3 text-sm leading-relaxed text-primary-foreground/85 sm:text-base">
-							If you're drawn to strategic problem-solving, evidence-based
+							If you&apos;re drawn to strategic problem-solving, evidence-based
 							decision-making, and building tools that empower others — you
 							belong here.
 						</p>

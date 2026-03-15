@@ -4,7 +4,6 @@ import { CoreValuesSection } from "@/components/sections/about/core-values-secti
 import { LeadershipSection } from "@/components/sections/about/leadership-section";
 import { PlatformStatsSection } from "@/components/sections/about/platform-stats-section";
 import { DifferentiationSection } from "@/components/sections/about/differentiation-section";
-import { CareersSection } from "@/components/sections/about/careers-section";
 import { AboutCtaSection } from "@/components/sections/about/about-cta-section";
 
 export default function About() {
