@@ -41,10 +41,10 @@ export function AboutHero() {
 						transition={{ duration: 0.5, delay: 0.1 }}
 						className="text-4xl font-extrabold leading-[1.08] tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
 					>
-						Driving the businesses{" "}
+						Empowering decisions{" "}
 						<span className="text-primary">
-							that shape
-							<br /> the future.
+							with market
+							<br /> intelligence.
 						</span>
 					</motion.h1>
 

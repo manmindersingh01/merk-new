@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/home/hero-section";
 import { LogosSection } from "@/components/sections/home/logos-section";
 import { StatsSection } from "@/components/sections/home/stats-section";
@@ -10,6 +11,20 @@ import { SecuritySection } from "@/components/sections/home/security-section";
 import { TestimonialsSection } from "@/components/sections/home/testimonials-section";
 // import { PricingSection } from "@/components/sections/home/pricing-section";
 import { CtaSection } from "@/components/sections/home/cta-section";
+
+export const metadata: Metadata = {
+	title: "MerkMetryx – AI-Powered Market Research & Product Validation",
+	description:
+		"Make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence. Validate products and grow faster with data-driven insights.",
+	openGraph: {
+		title: "MerkMetryx – AI-Powered Market Research & Product Validation",
+		description:
+			"Make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence.",
+		url: "https://www.merkmetryx.com",
+		siteName: "MerkMetryx",
+		type: "website",
+	},
+};
 
 export default function Home() {
 	return (

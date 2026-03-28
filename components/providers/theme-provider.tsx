@@ -1,12 +1,6 @@
 "use client";
 
-import {
-	createContext,
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "dark" | "light" | "system";
 
@@ -41,11 +35,7 @@ export function ThemeProvider({
 		}
 		return defaultTheme;
 	});
-	const mountedRef = useRef(false);
-
 	useEffect(() => {
-		mountedRef.current = true;
-
 		const root = window.document.documentElement;
 
 		root.classList.remove("light", "dark");
@@ -70,11 +60,6 @@ export function ThemeProvider({
 			setTheme(theme);
 		},
 	};
-
-	// Prevent flash of unstyled content by not rendering until mounted
-	if (typeof window === "undefined") {
-		return null;
-	}
 
 	return (
 		<ThemeProviderContext.Provider {...props} value={value}>

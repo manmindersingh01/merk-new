@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Mail, MapPin, Clock } from "lucide-react";
+
+export const metadata: Metadata = {
+	title: "Contact MerkMetryx – Get in Touch",
+	description:
+		"Reach out to MerkMetryx for a free consultation. Book a demo, discuss your research needs, or get a custom proposal.",
+};
 
 const NEXT_STEPS = [
 	{
@@ -45,7 +53,9 @@ export default function ContactPage() {
 						<h2 className="mb-6 text-xl font-bold text-foreground">
 							Send us a message
 						</h2>
-						<ContactForm />
+						<Suspense>
+							<ContactForm />
+						</Suspense>
 					</div>
 
 					{/* Sidebar info — takes 2 of 5 columns */}

@@ -19,7 +19,7 @@ const sections = [
 		icon: Compass,
 		tag: "Our Mission",
 		title:
-			"To deliver effective digital marketing and research solutions, provide a high-touch customer experience, and reinvest profits into client success and the broader community.",
+			"To deliver actionable market research and strategic insights, provide a high-touch customer experience, and reinvest profits into client success and the broader community.",
 		description:
 			"Every client engagement is built on three pillars: methodological excellence, strategic partnership, and measurable impact. We deliver research intelligence that doesn't sit in a deck — it drives decisions, shapes roadmaps, and validates capital commitments before they're made.",
 		reverse: true,
@@ -72,8 +72,8 @@ export function VisionMissionSection() {
 										}
 										alt={
 											i === 0
-												? "MerkMetryx vision - driving force behind businesses that shape the future"
-												: "MerkMetryx mission - delivering effective digital marketing and research solutions"
+												? "MerkMetryx vision - empowering decisions with market intelligence"
+												: "MerkMetryx mission - delivering actionable market research and strategic insights"
 										}
 										width={1920}
 										height={1080}

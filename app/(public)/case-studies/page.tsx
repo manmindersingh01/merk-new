@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
+
+export const metadata: Metadata = {
+	title: "MerkMetryx Case Studies – Real Results from Real Research",
+	description:
+		"See how businesses use MerkMetryx for market sizing, consumer insights, and product validation. Browse our case studies by industry.",
+};
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { CaseStudy } from "@/types/case-study";
 import { ArrowRight, BarChart3 } from "lucide-react";

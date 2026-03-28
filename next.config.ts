@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
+import { resolve } from "path";
 
 const nextConfig: NextConfig = {
 	output: "standalone",
-	/* config options here */
+	turbopack: {
+		root: resolve(__dirname),
+	},
 };
 
 export default nextConfig;
