@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 	title: "Contact MerkMetryx – Get in Touch",
 	description:
 		"Reach out to MerkMetryx for a free consultation. Book a demo, discuss your research needs, or get a custom proposal.",
+	alternates: {
+		canonical: "/contact",
+	},
 };
 
 const NEXT_STEPS = [

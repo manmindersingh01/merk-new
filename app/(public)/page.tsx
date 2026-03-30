@@ -16,10 +16,13 @@ export const metadata: Metadata = {
 	title: "MerkMetryx – AI-Powered Market Research & Product Validation",
 	description:
 		"Make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence. Validate products and grow faster with data-driven insights.",
+	alternates: {
+		canonical: "/",
+	},
 	openGraph: {
 		title: "MerkMetryx – AI-Powered Market Research & Product Validation",
 		description:
-			"Make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence.",
+			"Make smarter decisions with AI-powered market research, consumer insights, and competitive intelligence.",
 		url: "https://www.merkmetryx.com",
 		siteName: "MerkMetryx",
 		type: "website",

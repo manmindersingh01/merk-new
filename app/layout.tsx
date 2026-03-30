@@ -26,9 +26,6 @@ export const metadata: Metadata = {
 		description:
 			"Make smarter decisions with AI-powered market research, consumer insights, and competitive intelligence.",
 	},
-	alternates: {
-		canonical: "https://www.merkmetryx.com",
-	},
 };
 
 export default function RootLayout({

@@ -6,6 +6,9 @@ export const metadata: Metadata = {
 	title: "MerkMetryx Case Studies – Real Results from Real Research",
 	description:
 		"See how businesses use MerkMetryx for market sizing, consumer insights, and product validation. Browse our case studies by industry.",
+	alternates: {
+		canonical: "/case-studies",
+	},
 };
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { CaseStudy } from "@/types/case-study";

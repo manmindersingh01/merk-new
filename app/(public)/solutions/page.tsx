@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 	title: "MerkMetryx Solutions – Market Sizing, Competitor Analysis & Consumer Insights",
 	description:
 		"Discover MerkMetryx solutions for market sizing, competitor analysis, consumer insights, concept testing, and pricing sensitivity. Make confident, data-driven decisions with our AI-powered research platform.",
+	alternates: {
+		canonical: "/solutions",
+	},
 };
 
 export default function Solutions() {

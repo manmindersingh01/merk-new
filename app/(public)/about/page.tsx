@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 	title: "About MerkMetryx – Our Mission, Vision & Team",
 	description:
 		"Learn about MerkMetryx, our mission to deliver actionable market research and strategic insights, our core values, and the team behind the platform.",
+	alternates: {
+		canonical: "/about",
+	},
 };
 
 export default function About() {

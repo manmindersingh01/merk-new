@@ -11,6 +11,9 @@ export const metadata: Metadata = {
 	title: "MerkMetryx Pricing – Transparent Research Plans",
 	description:
 		"Explore MerkMetryx pricing plans. Transparent, no hidden fees. Choose the right market research package for your business needs.",
+	alternates: {
+		canonical: "/pricing",
+	},
 };
 
 export default function Pricing() {

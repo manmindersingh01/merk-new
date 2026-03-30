@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
 import { MarkdownContent } from "@/components/blog/markdown-content";
@@ -18,6 +19,62 @@ const categoryGradients: Record<string, string> = {
 
 interface PostPageProps {
 	params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+	params,
+}: PostPageProps): Promise<Metadata> {
+	const { slug } = await params;
+
+	const { data: post } = await supabase
+		.from("posts")
+		.select("*")
+		.eq("slug", slug)
+		.eq("published", true)
+		.single();
+
+	if (!post) {
+		return {
+			title: "Post Not Found",
+		};
+	}
+
+	const typedPost = post as Post;
+	const description =
+		typedPost.excerpt ||
+		`Read ${typedPost.title} by ${typedPost.author} on MerkMetryx blog.`;
+
+	return {
+		title: typedPost.title,
+		description,
+		alternates: {
+			canonical: `/blog/${slug}`,
+		},
+		openGraph: {
+			title: typedPost.title,
+			description,
+			type: "article",
+			publishedTime: typedPost.published_at || undefined,
+			authors: [typedPost.author],
+			tags: typedPost.tags || undefined,
+			images: typedPost.cover_image_url
+				? [
+						{
+							url: typedPost.cover_image_url,
+							alt: typedPost.title,
+						},
+					]
+				: undefined,
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: typedPost.title,
+			description,
+			images: typedPost.cover_image_url
+				? [typedPost.cover_image_url]
+				: undefined,
+		},
+	};
 }
 
 async function RelatedPosts({

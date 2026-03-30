@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { supabase } from "@/lib/supabase";
 import { MarkdownContent } from "@/components/blog/markdown-content";
@@ -23,6 +24,58 @@ const industryGradients: Record<string, string> = {
 
 interface CaseStudyPageProps {
 	params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+	params,
+}: CaseStudyPageProps): Promise<Metadata> {
+	const { slug } = await params;
+
+	const { data } = await supabase
+		.from("case_studies")
+		.select("*")
+		.eq("slug", slug)
+		.eq("published", true)
+		.single();
+
+	if (!data) {
+		return {
+			title: "Case Study Not Found",
+		};
+	}
+
+	const cs = data as CaseStudy;
+	const description =
+		cs.excerpt ||
+		`Case study: ${cs.title}${cs.client ? ` - ${cs.client}` : ""}${cs.results ? ` - ${cs.results}` : ""}`;
+
+	return {
+		title: `${cs.title} - Case Study`,
+		description,
+		alternates: {
+			canonical: `/case-studies/${slug}`,
+		},
+		openGraph: {
+			title: `${cs.title} - Case Study`,
+			description,
+			type: "article",
+			publishedTime: cs.published_at || undefined,
+			images: cs.cover_image_url
+				? [
+						{
+							url: cs.cover_image_url,
+							alt: cs.title,
+						},
+					]
+				: undefined,
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: `${cs.title} - Case Study`,
+			description,
+			images: cs.cover_image_url ? [cs.cover_image_url] : undefined,
+		},
+	};
 }
 
 async function RelatedCaseStudies({

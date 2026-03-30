@@ -7,6 +7,9 @@ export const metadata: Metadata = {
 	title: "Careers at MerkMetryx – Join Our Team",
 	description:
 		"Explore open positions at MerkMetryx. Join a team building the future of AI-powered market research.",
+	alternates: {
+		canonical: "/careers",
+	},
 };
 
 export default function Solutions() {

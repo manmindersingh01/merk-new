@@ -6,6 +6,9 @@ export const metadata: Metadata = {
 	title: "MerkMetryx Blog – Market Research Insights & Trends",
 	description:
 		"Read the latest articles on market research, consumer insights, AI in research, and data-driven decision making from the MerkMetryx team.",
+	alternates: {
+		canonical: "/blog",
+	},
 };
 import { BlogCard } from "@/components/blog/blog-card";
 import { Post } from "@/types/blog";
