@@ -163,12 +163,16 @@ async function PostContent({ slug }: { slug: string }) {
 			})
 		: null;
 
+	const description =
+		typedPost.excerpt ||
+		`Read ${typedPost.title} by ${typedPost.author} on MerkMetryx blog.`;
+
 	// Generate structured data for Article
 	const articleStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "Article",
 		headline: typedPost.title,
-		description: typedPost.excerpt || description,
+		description,
 		image: typedPost.cover_image_url || undefined,
 		datePublished: typedPost.published_at || undefined,
 		dateModified: typedPost.updated_at || typedPost.published_at || undefined,

@@ -165,13 +165,17 @@ async function CaseStudyContent({ slug }: { slug: string }) {
 			})
 		: null;
 
+	const description =
+		cs.excerpt ||
+		`Case study: ${cs.title}${cs.client ? ` - ${cs.client}` : ""}${cs.results ? ` - ${cs.results}` : ""}`;
+
 	// Generate structured data for Case Study
 	const caseStudyStructuredData = {
 		"@context": "https://schema.org",
 		"@type": "Article",
 		"@id": `https://merkmetryx.com/case-studies/${slug}`,
 		headline: cs.title,
-		description: cs.excerpt || description,
+		description,
 		image: cs.cover_image_url || undefined,
 		datePublished: cs.published_at || undefined,
 		dateModified: cs.updated_at || cs.published_at || undefined,
