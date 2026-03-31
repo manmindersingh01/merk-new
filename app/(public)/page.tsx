@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		title: "MerkMetryx – AI-Powered Market Research & Product Validation",
 		description:
 			"Make smarter decisions with AI-powered market research, consumer insights, and competitive intelligence.",
-		url: "https://www.merkmetryx.com",
+		url: "https://merkmetryx.com",
 		siteName: "MerkMetryx",
 		type: "website",
 	},

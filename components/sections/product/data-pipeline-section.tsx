@@ -190,8 +190,8 @@ export function DataPipelineSection() {
 									99.8% bot rejection.
 								</strong>{" "}
 								<strong className="text-foreground">94% ML precision.</strong>{" "}
-								These aren&apos;t promises — they&apos;re performance benchmarks validated
-								across 500+ enterprise engagements.
+								These aren&apos;t promises — they&apos;re performance benchmarks
+								validated across 500+ enterprise engagements.
 							</p>
 						</div>
 

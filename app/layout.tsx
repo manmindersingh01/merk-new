@@ -3,7 +3,7 @@ import "./globals2.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "sonner";
 export const metadata: Metadata = {
-	metadataBase: new URL("https://www.merkmetryx.com"),
+	metadataBase: new URL("https://merkmetryx.com"),
 	title: {
 		default:
 			"MerkMetryx – AI-Powered Market Research & Product Validation Platform",
@@ -11,20 +11,51 @@ export const metadata: Metadata = {
 	},
 	description:
 		"MerkMetryx helps brands make smarter decisions with AI-powered market research, consumer insights, demand forecasting, and competitive intelligence. Validate products, optimize marketing, and grow faster with data-driven insights.",
+	keywords: [
+		"market research",
+		"AI market research",
+		"consumer insights",
+		"product validation",
+		"competitive intelligence",
+		"demand forecasting",
+		"market analysis",
+		"B2B research platform",
+	],
+	authors: [{ name: "MerkMetryx" }],
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://www.merkmetryx.com",
+		url: "https://merkmetryx.com",
 		siteName: "MerkMetryx",
 		title: "MerkMetryx – AI-Powered Market Research & Product Validation",
 		description:
 			"Make smarter decisions with AI-powered market research, consumer insights, and competitive intelligence.",
+		images: [
+			{
+				url: "https://merkmetryx.com/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "MerkMetryx - AI-Powered Market Research Platform",
+			},
+		],
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "MerkMetryx – AI-Powered Market Research",
 		description:
 			"Make smarter decisions with AI-powered market research, consumer insights, and competitive intelligence.",
+		images: ["https://merkmetryx.com/og-image.png"],
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
 	},
 };
 
@@ -44,10 +75,10 @@ export default function RootLayout({
 							"@graph": [
 								{
 									"@type": "Organization",
-									"@id": "https://www.merkmetryx.com/#organization",
+									"@id": "https://merkmetryx.com/#organization",
 									name: "MerkMetryx",
-									url: "https://www.merkmetryx.com",
-									logo: "https://www.merkmetryx.com/logo.svg",
+									url: "https://merkmetryx.com",
+									logo: "https://merkmetryx.com/logo.svg",
 									description:
 										"AI-powered market research and product validation platform helping brands make smarter, data-driven decisions.",
 									contactPoint: {
@@ -55,6 +86,10 @@ export default function RootLayout({
 										email: "business@agixinternational.com",
 										contactType: "sales",
 									},
+									sameAs: [
+										"https://www.linkedin.com/company/merkmetryx",
+										"https://twitter.com/merkmetryx",
+									],
 									address: [
 										{
 											"@type": "PostalAddress",
@@ -67,8 +102,7 @@ export default function RootLayout({
 										},
 										{
 											"@type": "PostalAddress",
-											streetAddress:
-												"801-4 Apricot Tower, Dubai Silicon Oasis",
+											streetAddress: "801-4 Apricot Tower, Dubai Silicon Oasis",
 											addressLocality: "Dubai",
 											addressCountry: "AE",
 										},
@@ -76,11 +110,20 @@ export default function RootLayout({
 								},
 								{
 									"@type": "WebSite",
-									"@id": "https://www.merkmetryx.com/#website",
-									url: "https://www.merkmetryx.com",
+									"@id": "https://merkmetryx.com/#website",
+									url: "https://merkmetryx.com",
 									name: "MerkMetryx",
 									publisher: {
-										"@id": "https://www.merkmetryx.com/#organization",
+										"@id": "https://merkmetryx.com/#organization",
+									},
+									potentialAction: {
+										"@type": "SearchAction",
+										target: {
+											"@type": "EntryPoint",
+											urlTemplate:
+												"https://merkmetryx.com/search?q={search_term_string}",
+										},
+										"query-input": "required name=search_term_string",
 									},
 								},
 							],
@@ -97,6 +140,7 @@ export default function RootLayout({
 					href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
 					rel="stylesheet"
 				/>
+				<link rel="manifest" href="/manifest.json" />
 			</head>
 			<body className="antialiased">
 				<Toaster position="top-right" />

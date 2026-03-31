@@ -42,9 +42,9 @@ export function SolutionsHero() {
 					transition={{ duration: 0.5, delay: 0.2 }}
 					className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
 				>
-					Whether you&apos;re a Chief Experience Officer, a Venture Capitalist, or a
-					Product Manager, MerkMetryx provides specialized research frameworks
-					designed for your industry and specific challenges.
+					Whether you&apos;re a Chief Experience Officer, a Venture Capitalist,
+					or a Product Manager, MerkMetryx provides specialized research
+					frameworks designed for your industry and specific challenges.
 				</motion.p>
 			</div>
 		</section>

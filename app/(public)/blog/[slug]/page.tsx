@@ -50,6 +50,8 @@ export async function generateMetadata({
 		alternates: {
 			canonical: `/blog/${slug}`,
 		},
+		keywords: typedPost.tags || undefined,
+		authors: [{ name: typedPost.author }],
 		openGraph: {
 			title: typedPost.title,
 			description,
@@ -161,8 +163,44 @@ async function PostContent({ slug }: { slug: string }) {
 			})
 		: null;
 
+	// Generate structured data for Article
+	const articleStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		headline: typedPost.title,
+		description: typedPost.excerpt || description,
+		image: typedPost.cover_image_url || undefined,
+		datePublished: typedPost.published_at || undefined,
+		dateModified: typedPost.updated_at || typedPost.published_at || undefined,
+		author: {
+			"@type": "Person",
+			name: typedPost.author,
+			jobTitle: typedPost.author_role,
+		},
+		publisher: {
+			"@type": "Organization",
+			"@id": "https://merkmetryx.com/#organization",
+			name: "MerkMetryx",
+			logo: {
+				"@type": "ImageObject",
+				url: "https://merkmetryx.com/logo.svg",
+			},
+		},
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": `https://merkmetryx.com/blog/${slug}`,
+		},
+		keywords: typedPost.tags?.join(", ") || undefined,
+	};
+
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(articleStructuredData),
+				}}
+			/>
 			{/* Cover header */}
 			<div
 				className={cn(

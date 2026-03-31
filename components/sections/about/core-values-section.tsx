@@ -43,8 +43,9 @@ export function CoreValuesSection() {
 						The principles that guide everything we do.
 					</h2>
 					<p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-						These aren&apos;t aspirational statements — they&apos;re the standards we hold
-						ourselves to on every engagement, every analysis, every insight.
+						These aren&apos;t aspirational statements — they&apos;re the
+						standards we hold ourselves to on every engagement, every analysis,
+						every insight.
 					</p>
 				</motion.div>
 

@@ -8,7 +8,8 @@ import { ProductCtaSection } from "@/components/sections/product/product-cta-sec
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "MerkMetryx AI Tools – AI Survey Builder, Sentiment Analysis & Predictive Insights",
+	title:
+		"MerkMetryx AI Tools – AI Survey Builder, Sentiment Analysis & Predictive Insights",
 	description:
 		"Discover MerkMetryx's AI tools - AI Survey Builder, NLP Sentiment Engine, Predictive Analytics, and Natural Language Querying to collect different viewpoints, predict demand, and take faster, smarter decisions.",
 	alternates: {

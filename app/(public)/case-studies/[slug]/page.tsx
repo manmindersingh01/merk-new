@@ -55,6 +55,9 @@ export async function generateMetadata({
 		alternates: {
 			canonical: `/case-studies/${slug}`,
 		},
+		keywords: cs.industry
+			? [cs.industry, "case study", "market research"]
+			: undefined,
 		openGraph: {
 			title: `${cs.title} - Case Study`,
 			description,
@@ -162,8 +165,50 @@ async function CaseStudyContent({ slug }: { slug: string }) {
 			})
 		: null;
 
+	// Generate structured data for Case Study
+	const caseStudyStructuredData = {
+		"@context": "https://schema.org",
+		"@type": "Article",
+		"@id": `https://merkmetryx.com/case-studies/${slug}`,
+		headline: cs.title,
+		description: cs.excerpt || description,
+		image: cs.cover_image_url || undefined,
+		datePublished: cs.published_at || undefined,
+		dateModified: cs.updated_at || cs.published_at || undefined,
+		author: {
+			"@type": "Organization",
+			"@id": "https://merkmetryx.com/#organization",
+			name: "MerkMetryx",
+		},
+		publisher: {
+			"@type": "Organization",
+			"@id": "https://merkmetryx.com/#organization",
+			name: "MerkMetryx",
+			logo: {
+				"@type": "ImageObject",
+				url: "https://merkmetryx.com/logo.svg",
+			},
+		},
+		mainEntityOfPage: {
+			"@type": "WebPage",
+			"@id": `https://merkmetryx.com/case-studies/${slug}`,
+		},
+		about: cs.industry
+			? {
+					"@type": "Thing",
+					name: cs.industry,
+				}
+			: undefined,
+	};
+
 	return (
 		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(caseStudyStructuredData),
+				}}
+			/>
 			{/* Hero */}
 			<div
 				className={cn(
