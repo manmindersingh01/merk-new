@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Script from "next/script";
 import { supabase } from "@/lib/supabase";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { BlogCard } from "@/components/blog/blog-card";
@@ -199,8 +200,10 @@ async function PostContent({ slug }: { slug: string }) {
 
 	return (
 		<>
-			<script
+			<Script
+				id="article-structured-data"
 				type="application/ld+json"
+				strategy="afterInteractive"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(articleStructuredData),
 				}}

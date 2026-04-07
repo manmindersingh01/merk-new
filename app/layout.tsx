@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals2.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "sonner";
@@ -141,6 +142,16 @@ export default function RootLayout({
 					rel="stylesheet"
 				/>
 				<link rel="manifest" href="/manifest.json" />
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-JJBQMQPW0C"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-JJBQMQPW0C');`}
+				</Script>
 			</head>
 			<body className="antialiased">
 				<Toaster position="top-right" />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Script from "next/script";
 import { supabase } from "@/lib/supabase";
 import { MarkdownContent } from "@/components/blog/markdown-content";
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
@@ -207,8 +208,10 @@ async function CaseStudyContent({ slug }: { slug: string }) {
 
 	return (
 		<>
-			<script
+			<Script
+				id="case-study-structured-data"
 				type="application/ld+json"
+				strategy="afterInteractive"
 				dangerouslySetInnerHTML={{
 					__html: JSON.stringify(caseStudyStructuredData),
 				}}
