@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
 import "./globals2.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "sonner";
+
+const roboto = Roboto({
+	weight: ["100", "300", "400", "500", "700", "900"],
+	subsets: ["latin"],
+	display: "swap",
+});
 export const metadata: Metadata = {
 	metadataBase: new URL("https://merkmetryx.com"),
 	title: {
@@ -66,7 +73,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<head>
+			<body className={`${roboto.className} antialiased`}>
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
@@ -130,19 +137,6 @@ export default function RootLayout({
 						}),
 					}}
 				/>
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link
-					rel="preconnect"
-					href="https://fonts.gstatic.com"
-					crossOrigin="anonymous"
-				/>
-				<link
-					href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-					rel="stylesheet"
-				/>
-				<link rel="manifest" href="/manifest.json" />
-			</head>
-			<body className="antialiased">
 				<Toaster position="top-right" />
 				<ThemeProvider defaultTheme="light" storageKey="theme">
 					{children}
