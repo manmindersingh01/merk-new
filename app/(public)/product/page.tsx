@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/product",
 	},
+	openGraph: {
+		url: "https://merkmetryx.com/product",
+	},
 };
 
 export default function Product() {

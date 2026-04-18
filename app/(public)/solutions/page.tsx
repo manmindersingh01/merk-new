@@ -13,6 +13,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/solutions",
 	},
+	openGraph: {
+		url: "https://merkmetryx.com/solutions",
+	},
 };
 
 export default function Solutions() {

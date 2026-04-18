@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/blog",
 	},
+	openGraph: {
+		url: "https://merkmetryx.com/blog",
+	},
 };
 import { BlogCard } from "@/components/blog/blog-card";
 import { Post } from "@/types/blog";

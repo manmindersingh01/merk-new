@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/case-studies",
 	},
+	openGraph: {
+		url: "https://merkmetryx.com/case-studies",
+	},
 };
 import { CaseStudyCard } from "@/components/case-studies/case-study-card";
 import { CaseStudy } from "@/types/case-study";

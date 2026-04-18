@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/careers",
 	},
+		openGraph: {
+		url: "https://merkmetryx.com/careers",
+	},
 };
 
 export default function Solutions() {

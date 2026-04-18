@@ -10,6 +10,9 @@ export const metadata: Metadata = {
 	alternates: {
 		canonical: "/contact",
 	},
+	openGraph: {
+		url: "https://merkmetryx.com/contact",
+	},
 };
 
 const NEXT_STEPS = [
